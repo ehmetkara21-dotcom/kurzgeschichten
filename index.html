@@ -1,945 +1,109 @@
-<!DOCTYPE html>
-<html lang="de">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KurzGeschichten — Geschichten fürs Herz</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
-<style>
-:root {
-  --bg: #0a0a0a;
-  --surface: #141414;
-  --surface2: #1e1e1e;
-  --gold: #c9a84c;
-  --gold2: #e8c97a;
-  --text: #ffffff;
-  --muted: #aaa;
-  --border: rgba(255,255,255,0.08);
-}
-
-* { margin:0; padding:0; box-sizing:border-box; }
-
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: 'Lato', sans-serif;
-  overflow-x: hidden;
-}
-
-::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-thumb { background: var(--gold); }
-
-/* NAV */
-nav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 100;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px 52px;
-  background: linear-gradient(to bottom, rgba(10,10,10,0.98), transparent);
-}
-
-nav.scrolled { background: rgba(10,10,10,0.98); }
-
-.logo {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.6rem;
-  font-weight: 900;
-  color: var(--text);
-  cursor: pointer;
-  letter-spacing: 1px;
-}
-
-.logo span { color: var(--gold); font-style: italic; }
-
-.nav-links {
-  display: flex;
-  gap: 32px;
-  list-style: none;
-}
-
-.nav-links a {
-  color: rgba(255,255,255,0.65);
-  text-decoration: none;
-  font-size: 0.82rem;
-  font-weight: 400;
-  letter-spacing: 1px;
-  transition: color 0.2s;
-}
-
-.nav-links a:hover, .nav-links a.active { color: white; }
-
-.nav-right {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.nav-instagram {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
-  color: white;
-  border: none;
-  padding: 8px 18px;
-  font-family: 'Lato', sans-serif;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 1px;
-  cursor: pointer;
-  border-radius: 4px;
-  transition: opacity 0.2s;
-  text-decoration: none;
-}
-
-.nav-instagram:hover { opacity: 0.85; }
-
-/* HERO */
-.hero {
-  position: relative;
-  height: 100vh;
-  min-height: 600px;
-  display: flex;
-  align-items: flex-end;
-  padding: 0 52px 100px;
-  overflow: hidden;
-}
-
-.hero-bg {
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(to right, rgba(10,10,10,0.97) 35%, rgba(10,10,10,0.3) 70%, rgba(10,10,10,0.7) 100%),
-    linear-gradient(to top, rgba(10,10,10,1) 0%, rgba(10,10,10,0.3) 35%, transparent 60%),
-    url('https://images.unsplash.com/photo-1455390582262-044cdead277a?w=1800&q=80') center/cover;
-  animation: heroPan 18s ease-in-out infinite alternate;
-}
-
-@keyframes heroPan {
-  from { transform: scale(1.05); }
-  to { transform: scale(1); }
-}
-
-.hero-content {
-  position: relative;
-  max-width: 560px;
-  animation: fadeUp 1s ease both;
-}
-
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.hero-tag {
-  display: inline-block;
-  font-size: 0.65rem;
-  font-weight: 700;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 16px;
-  border-left: 3px solid var(--gold);
-  padding-left: 12px;
-}
-
-.hero-title {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(2.5rem, 5vw, 4.5rem);
-  font-weight: 900;
-  line-height: 1.1;
-  margin-bottom: 16px;
-}
-
-.hero-title em { color: var(--gold); font-style: italic; }
-
-.hero-desc {
-  font-size: 1rem;
-  line-height: 1.75;
-  color: rgba(255,255,255,0.7);
-  margin-bottom: 32px;
-  font-weight: 300;
-}
-
-.hero-btns {
-  display: flex;
-  gap: 12px;
-}
-
-.btn-lesen {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  background: var(--gold);
-  color: var(--bg);
-  border: none;
-  padding: 14px 32px;
-  font-family: 'Lato', sans-serif;
-  font-size: 0.88rem;
-  font-weight: 700;
-  letter-spacing: 1px;
-  cursor: pointer;
-  border-radius: 3px;
-  transition: all 0.2s;
-}
-
-.btn-lesen:hover { background: var(--gold2); transform: translateY(-2px); }
-
-.btn-mehr {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  background: rgba(255,255,255,0.1);
-  color: white;
-  border: 1px solid rgba(255,255,255,0.2);
-  padding: 14px 28px;
-  font-family: 'Lato', sans-serif;
-  font-size: 0.88rem;
-  font-weight: 400;
-  cursor: pointer;
-  border-radius: 3px;
-  transition: all 0.2s;
-  backdrop-filter: blur(10px);
-}
-
-.btn-mehr:hover { background: rgba(255,255,255,0.18); }
-
-/* ROW */
-.row-section { padding: 0 52px 48px; }
-
-.row-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 20px;
-}
-
-.row-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: var(--text);
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.row-title::before {
-  content: '';
-  width: 3px;
-  height: 1.2em;
-  background: var(--gold);
-  display: inline-block;
-  border-radius: 2px;
-  vertical-align: middle;
-}
-
-.row-link {
-  font-size: 0.72rem;
-  letter-spacing: 1px;
-  color: var(--gold);
-  text-decoration: none;
-  font-weight: 700;
-  transition: opacity 0.2s;
-}
-
-.row-link:hover { opacity: 0.7; }
-
-.row-scroll {
-  display: flex;
-  gap: 16px;
-  overflow-x: auto;
-  padding-bottom: 8px;
-  scrollbar-width: none;
-}
-
-.row-scroll::-webkit-scrollbar { display: none; }
-
-/* STORY CARD */
-.story-card {
-  flex-shrink: 0;
-  width: 220px;
-  cursor: pointer;
-  transition: transform 0.3s;
-}
-
-.story-card:hover { transform: scale(1.04); }
-
-.story-cover {
-  width: 100%;
-  aspect-ratio: 3/4;
-  background: var(--surface2);
-  border-radius: 6px;
-  overflow: hidden;
-  position: relative;
-  margin-bottom: 12px;
-}
-
-.story-cover img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  transition: filter 0.3s;
-  filter: brightness(0.85);
-}
-
-.story-card:hover .story-cover img { filter: brightness(1); }
-
-.story-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(10,10,10,0.95) 0%, transparent 55%);
-  padding: 20px 16px 16px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-
-.story-card:hover .story-overlay { opacity: 1; }
-
-.story-btn {
-  background: var(--gold);
-  color: var(--bg);
-  border: none;
-  padding: 10px;
-  font-family: 'Lato', sans-serif;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 1px;
-  cursor: pointer;
-  border-radius: 3px;
-  transition: background 0.2s;
-  text-transform: uppercase;
-}
-
-.story-btn:hover { background: var(--gold2); }
-
-.story-badge {
-  position: absolute;
-  top: 10px; left: 10px;
-  background: var(--gold);
-  color: var(--bg);
-  font-size: 0.55rem;
-  font-weight: 800;
-  letter-spacing: 1.5px;
-  padding: 4px 9px;
-  border-radius: 2px;
-  text-transform: uppercase;
-}
-
-.story-badge.neu { background: #e50914; color: white; }
-
-.story-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 0.95rem;
-  font-weight: 700;
-  line-height: 1.3;
-  margin-bottom: 5px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.story-meta {
-  font-size: 0.7rem;
-  color: var(--muted);
-  display: flex;
-  gap: 8px;
-}
-
-.story-meta .kat { color: var(--gold); font-weight: 700; }
-
-/* FEATURED WIDE */
-.featured-wide {
-  flex-shrink: 0;
-  width: 380px;
-  cursor: pointer;
-  transition: transform 0.3s;
-}
-
-.featured-wide:hover { transform: scale(1.03); }
-
-.featured-cover {
-  width: 100%;
-  aspect-ratio: 16/9;
-  border-radius: 6px;
-  overflow: hidden;
-  position: relative;
-  margin-bottom: 12px;
-}
-
-.featured-cover img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  transition: filter 0.3s;
-  filter: brightness(0.75);
-}
-
-.featured-wide:hover .featured-cover img { filter: brightness(0.95); }
-
-.featured-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(10,10,10,0.95) 0%, transparent 55%);
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-}
-
-.featured-tag {
-  font-size: 0.6rem;
-  font-weight: 700;
-  letter-spacing: 2px;
-  color: var(--gold);
-  text-transform: uppercase;
-  margin-bottom: 6px;
-}
-
-.featured-name {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.2rem;
-  font-weight: 700;
-  line-height: 1.3;
-  margin-bottom: 4px;
-}
-
-.featured-meta {
-  font-size: 0.68rem;
-  color: rgba(255,255,255,0.55);
-}
-
-/* TOP 10 */
-.top-card {
-  flex-shrink: 0;
-  width: 200px;
-  cursor: pointer;
-  display: flex;
-  align-items: flex-end;
-  transition: transform 0.3s;
-}
-
-.top-card:hover { transform: scale(1.04); }
-
-.top-num {
-  font-family: 'Playfair Display', serif;
-  font-size: 6rem;
-  font-weight: 900;
-  line-height: 1;
-  color: transparent;
-  -webkit-text-stroke: 2px rgba(255,255,255,0.2);
-  margin-right: -16px;
-  z-index: 1;
-  user-select: none;
-}
-
-.top-cover {
-  width: 140px;
-  aspect-ratio: 3/4;
-  border-radius: 6px;
-  overflow: hidden;
-  flex-shrink: 0;
-}
-
-.top-cover img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  filter: brightness(0.85);
-}
-
-/* STORY MODAL */
-.modal-bg {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.96);
-  z-index: 500;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  overflow-y: auto;
-}
-
-.modal-bg.active { display: flex; }
-
-.modal-box {
-  background: var(--surface);
-  width: 90%;
-  max-width: 720px;
-  border-radius: 8px;
-  overflow: hidden;
-  animation: modalIn 0.3s ease both;
-  position: relative;
-}
-
-@keyframes modalIn {
-  from { opacity: 0; transform: scale(0.96) translateY(20px); }
-  to { opacity: 1; transform: scale(1) translateY(0); }
-}
-
-.modal-img {
-  width: 100%;
-  aspect-ratio: 16/9;
-  object-fit: cover;
-  filter: brightness(0.7);
-}
-
-.modal-content { padding: 36px 40px 40px; }
-
-.modal-kat {
-  font-size: 0.62rem;
-  font-weight: 700;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 12px;
-}
-
-.modal-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 2rem;
-  font-weight: 900;
-  line-height: 1.2;
-  margin-bottom: 20px;
-}
-
-.modal-body {
-  font-size: 1rem;
-  line-height: 1.9;
-  color: rgba(255,255,255,0.8);
-  font-weight: 300;
-}
-
-.modal-body p { margin-bottom: 18px; }
-
-.modal-close {
-  position: fixed;
-  top: 16px; right: 20px;
-  background: rgba(0,0,0,0.6);
-  border: none;
-  color: white;
-  font-size: 1.2rem;
-  cursor: pointer;
-  padding: 6px 14px;
-  border-radius: 4px;
-  transition: background 0.2s;
-  z-index: 1001;
-}
-
-.modal-close:hover { background: var(--gold); color: var(--bg); }
-
-/* INSTAGRAM SECTION */
-.insta-section {
-  background: var(--surface);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  padding: 52px;
-  text-align: center;
-  margin-bottom: 0;
-}
-
-.insta-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 2rem;
-  font-weight: 900;
-  margin-bottom: 12px;
-}
-
-.insta-title span { color: var(--gold); font-style: italic; }
-
-.insta-desc {
-  font-size: 0.95rem;
-  color: var(--muted);
-  font-weight: 300;
-  margin-bottom: 28px;
-  max-width: 500px;
-  margin-left: auto;
-  margin-right: auto;
-  line-height: 1.7;
-}
-
-.insta-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
-  color: white;
-  border: none;
-  padding: 15px 40px;
-  font-family: 'Lato', sans-serif;
-  font-size: 0.88rem;
-  font-weight: 700;
-  letter-spacing: 1.5px;
-  cursor: pointer;
-  border-radius: 4px;
-  transition: opacity 0.2s, transform 0.2s;
-  text-decoration: none;
-}
-
-.insta-btn:hover { opacity: 0.88; transform: translateY(-2px); }
-
-.insta-stats {
-  display: flex;
-  justify-content: center;
-  gap: 48px;
-  margin-top: 36px;
-}
-
-.insta-stat-num {
-  font-family: 'Playfair Display', serif;
-  font-size: 2rem;
-  font-weight: 900;
-  color: var(--gold);
-  display: block;
-}
-
-.insta-stat-lbl {
-  font-size: 0.72rem;
-  color: var(--muted);
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
-
-/* FOOTER */
-footer {
-  background: var(--bg);
-  padding: 48px 52px;
-  border-top: 1px solid var(--border);
-}
-
-.footer-inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 40px;
-  margin-bottom: 36px;
-}
-
-.footer-brand .logo { font-size: 1.3rem; }
-
-.footer-brand p {
-  font-size: 0.82rem;
-  color: var(--muted);
-  line-height: 1.7;
-  margin-top: 12px;
-  max-width: 240px;
-  font-weight: 300;
-}
-
-.footer-col h4 {
-  font-size: 0.6rem;
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 16px;
-  font-weight: 700;
-}
-
-.footer-col ul { list-style: none; }
-.footer-col ul li { margin-bottom: 10px; }
-
-.footer-col ul li a {
-  color: var(--muted);
-  text-decoration: none;
-  font-size: 0.82rem;
-  transition: color 0.2s;
-  font-weight: 300;
-}
-
-.footer-col ul li a:hover { color: white; }
-
-.footer-bottom {
-  padding-top: 24px;
-  border-top: 1px solid var(--border);
-  display: flex;
-  justify-content: space-between;
-  font-size: 0.7rem;
-  color: rgba(255,255,255,0.25);
-}
-
-.footer-bottom .gold { color: var(--gold); }
-
-@media (max-width: 900px) {
-  nav { padding: 14px 20px; }
-  .nav-links { display: none; }
-  .hero { padding: 0 20px 80px; }
-  .row-section { padding: 0 20px 36px; }
-  .story-card { width: 160px; }
-  .featured-wide { width: 280px; }
-  .top-card { width: 160px; }
-  .top-num { font-size: 4.5rem; }
-  .top-cover { width: 110px; }
-  .insta-section { padding: 40px 20px; }
-  .insta-stats { gap: 28px; }
-  footer { padding: 36px 20px; }
-  .footer-inner { flex-direction: column; }
-  .footer-bottom { flex-direction: column; gap: 6px; }
-  .modal-content { padding: 24px 20px 28px; }
-  .modal-title { font-size: 1.5rem; }
-}
-</style>
-</head>
-<body>
-
-<!-- STORY MODAL -->
-<div class="modal-bg" id="storyModal">
-  <div class="modal-box">
-    <button class="modal-close">✕</button>
-    <img class="modal-img" id="mImg" src="" alt="">
-    <div class="modal-content">
-      <div class="modal-kat" id="mKat"></div>
-      <h1 class="modal-title" id="mTitle"></h1>
-      <div class="modal-body" id="mBody"></div>
-    </div>
-  </div>
-</div>
-
-<!-- NAV -->
-<nav id="navbar">
-  <div class="logo">Kurz<span>Geschichten</span></div>
-  <ul class="nav-links">
-    <li><a href="#" class="active">Startseite</a></li>
-    <li><a href="#">Liebe</a></li>
-    <li><a href="#">Drama</a></li>
-    <li><a href="#">Thriller</a></li>
-    <li><a href="#">Alle Geschichten</a></li>
-  </ul>
-  <div class="nav-right">
-    <a class="nav-instagram" href="https://instagram.com" target="_blank">📷 Instagram</a>
-  </div>
-</nav>
-
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-content">
-    <div class="hero-tag">Geschichte der Woche</div>
-    <h1 class="hero-title">Das letzte<br><em>Versprechen</em></h1>
-    <p class="hero-desc">Ein alter Mann kehrt nach 40 Jahren in seine Heimatstadt zurück — und entdeckt, dass das Versprechen, das er einst gab, alles verändert hat.</p>
-    <div class="hero-btns">
-      <button class="btn-lesen" data-story-id="s1">📖 Jetzt lesen</button>
-      <button class="btn-mehr">+ Merken</button>
-    </div>
-  </div>
-</div>
-
-<!-- NEU -->
-<div class="row-section">
-  <div class="row-head">
-    <div class="row-title">Neue Geschichten</div>
-    <a href="#" class="row-link">Alle ansehen →</a>
-  </div>
-  <div class="row-scroll">
-    <div class="story-card" style="cursor:pointer" onclick="openStory('Liebe','Der Brief aus Paris','https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=400&q=80','<p>Der Umschlag lag wie ein Relikt in einem Buch, das Clara seit Jahren nicht mehr geöffnet hatte. Sie zog ihn heraus, öffnete ihn mit zögernden Fingern und fand eine Handschrift, d...</p>')">
-      <div class="story-cover">
-        <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=400&q=80" alt="">
-        <div class="story-badge neu">Neu</div>
-        <div class="story-overlay"><button class="story-btn" onclick="openStory('Liebe','Der Brief aus Paris','https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=400&q=80','<p>Der Umschlag lag wie ein Relikt in einem Buch, das Clara seit Jahren nicht mehr geöffnet hatte. Sie zog ihn heraus, öffnete ihn mit zögernden Fingern und fand eine Handschrift, d...</p>')">Lesen</button></div>
-      </div>
-      <div class="story-title">Der Brief aus Paris</div>
-      <div class="story-meta"><span class="kat">Liebe</span><span>4 Min.</span></div>
-    </div>
-    <div class="story-card" style="cursor:pointer" onclick="openStory('Drama','Die letzte Schicht','https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?w=400&q=80','<p>Karl hatte seine Schicht stets mit einem Ritual begonnen: eine Tasse Kaffee, ein Blick auf die Uhr, ein kurzes Nicken in Richtung der Kollegen...</p>')">
-      <div class="story-cover">
-        <img src="https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?w=400&q=80" alt="">
-        <div class="story-badge neu">Neu</div>
-        <div class="story-overlay"><button class="story-btn" onclick="openStory('Drama','Die letzte Schicht','https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?w=400&q=80','<p>Karl hatte seine Schicht stets mit einem Ritual begonnen: eine Tasse Kaffee, ein Blick auf die Uhr, ein kurzes Nicken in Richtung der Kollegen...</p>')">Lesen</button></div>
-      </div>
-      <div class="story-title">Die letzte Schicht</div>
-      <div class="story-meta"><span class="kat">Drama</span><span>3 Min.</span></div>
-    </div>
-    <div class="story-card" style="cursor:pointer" onclick="openStory('Thriller','Der Nachbar','https://images.unsplash.com/photo-1448375240586-882707db888b?w=400&q=80','<p>Anna bemerkte zuerst die kleinen Dinge: ein Schatten, der spätabends am Fenster vorbeizog, die Fußspuren, die morgens frischer wirkten als zuvor...</p>')">
-      <div class="story-cover">
-        <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?w=400&q=80" alt="">
-        <div class="story-badge neu">Neu</div>
-        <div class="story-overlay"><button class="story-btn" onclick="openStory('Thriller','Der Nachbar','https://images.unsplash.com/photo-1448375240586-882707db888b?w=400&q=80','<p>Anna bemerkte zuerst die kleinen Dinge: ein Schatten, der spätabends am Fenster vorbeizog, die Fußspuren, die morgens frischer wirkten als zuvor...</p>')">Lesen</button></div>
-      </div>
-      <div class="story-title">Der Nachbar</div>
-      <div class="story-meta"><span class="kat">Thriller</span><span>5 Min.</span></div>
-    </div>
-    <div class="story-card" style="cursor:pointer" onclick="openStory('Liebe','Zweiter Frühling','https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=400&q=80','<p>Gertrud dachte lange, ihr Leben sei ein Kapitel, das man am Ende zuschlägt und dann behutsam ins Regal stellt...</p>')">
-      <div class="story-cover">
-        <img src="https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=400&q=80" alt="">
-        <div class="story-badge">Beliebt</div>
-        <div class="story-overlay"><button class="story-btn" onclick="openStory('Liebe','Zweiter Frühling','https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=400&q=80','<p>Gertrud dachte lange, ihr Leben sei ein Kapitel, das man am Ende zuschlägt und dann behutsam ins Regal stellt...</p>')">Lesen</button></div>
-      </div>
-      <div class="story-title">Zweiter Frühling</div>
-      <div class="story-meta"><span class="kat">Liebe</span><span>4 Min.</span></div>
-    </div>
-    <div class="story-card" style="cursor:pointer" onclick="openStory('Drama','Der leere Stuhl','https://images.unsplash.com/photo-1574267432553-4b4628081c31?w=400&q=80','<p>Die Tradition eines leeren Stuhls am Tisch war älter als die meisten Anwesenden erinnern konnten...</p>')">
-      <div class="story-cover">
-        <img src="https://images.unsplash.com/photo-1574267432553-4b4628081c31?w=400&q=80" alt="">
-        <div class="story-overlay"><button class="story-btn" onclick="openStory('Drama','Der leere Stuhl','https://images.unsplash.com/photo-1574267432553-4b4628081c31?w=400&q=80','<p>Die Tradition eines leeren Stuhls am Tisch war älter als die meisten Anwesenden erinnern konnten...</p>')">Lesen</button></div>
-      </div>
-      <div class="story-title">Der leere Stuhl</div>
-      <div class="story-meta"><span class="kat">Drama</span><span>3 Min.</span></div>
-    </div>
-  </div>
-</div>
-
-<!-- EMPFOHLEN -->
-<div class="row-section">
-  <div class="row-head">
-    <div class="row-title">Empfohlen für Sie</div>
-    <a href="#" class="row-link">Alle ansehen →</a>
-  </div>
-  <div class="row-scroll">
-    <div class="featured-wide" data-story-id="s7">
-      <div class="featured-cover">
-        <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?w=700&q=80" alt="">
-        <div class="featured-overlay">
-          <div class="featured-tag">★ Top Geschichte</div>
-          <div class="featured-name">Die Frau am Fenster</div>
-          <div class="featured-meta">Liebe · 5 Min. lesen</div>
-        </div>
-      </div>
-    </div>
-    <div class="featured-wide" data-story-id="s8">
-      <div class="featured-cover">
-        <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=700&q=80" alt="">
-        <div class="featured-overlay">
-          <div class="featured-tag">❤ Sehr beliebt</div>
-          <div class="featured-name">Heimkehr</div>
-          <div class="featured-meta">Drama · 4 Min. lesen</div>
-        </div>
-      </div>
-    </div>
-    <div class="featured-wide" data-story-id="s9">
-      <div class="featured-cover">
-        <img src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=700&q=80" alt="">
-        <div class="featured-overlay">
-          <div class="featured-tag">🔥 Diese Woche</div>
-          <div class="featured-name">Das Foto</div>
-          <div class="featured-meta">Thriller · 4 Min. lesen</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- TOP 10 -->
-<div class="row-section">
-  <div class="row-head">
-    <div class="row-title">Top 10 Diese Woche</div>
-  </div>
-  <div class="row-scroll">
-    <div class="top-card" data-story-id="s1">
-      <div class="top-num">1</div>
-      <div class="top-cover"><img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?w=300&q=80" alt=""></div>
-    </div>
-    <div class="top-card" data-story-id="s4">
-      <div class="top-num">2</div>
-      <div class="top-cover"><img src="https://images.unsplash.com/photo-1574267432553-4b4628081c31?w=300&q=80" alt=""></div>
-    </div>
-    <div class="top-card" data-story-id="s5">
-      <div class="top-num">3</div>
-      <div class="top-cover"><img src="https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=300&q=80" alt=""></div>
-    </div>
-    <div class="top-card" data-story-id="s6">
-      <div class="top-num">4</div>
-      <div class="top-cover"><img src="https://images.unsplash.com/photo-1448375240586-882707db888b?w=300&q=80" alt=""></div>
-    </div>
-    <div class="top-card" data-story-id="s7">
-      <div class="top-num">5</div>
-      <div class="top-cover"><img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?w=300&q=80" alt=""></div>
-    </div>
-  </div>
-</div>
-
-<!-- INSTAGRAM CTA -->
-<div class="insta-section">
-  <h2 class="insta-title">Folgen Sie uns auf <span>Instagram</span></h2>
-  <p class="insta-desc">Täglich neue Kurzgeschichten, die das Herz berühren. Werden Sie Teil unserer wachsenden Gemeinschaft.</p>
-  <a class="insta-btn" href="https://instagram.com" target="_blank">📷 Jetzt folgen</a>
-  <div class="insta-stats">
-    <div>
-      <span class="insta-stat-num">974B</span>
-      <span class="insta-stat-lbl">Aufrufe</span>
-    </div>
-    <div>
-      <span class="insta-stat-num">50+</span>
-      <span class="insta-stat-lbl">Geschichten</span>
-    </div>
-    <div>
-      <span class="insta-stat-num">Täglich</span>
-      <span class="insta-stat-lbl">Neu</span>
-    </div>
-  </div>
-</div>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-inner">
-    <div class="footer-brand">
-      <div class="logo">Kurz<span>Geschichten</span></div>
-      <p>Kurzgeschichten, die das Herz berühren. Täglich neue Geschichten über Liebe, Leben und das Menschliche.</p>
-    </div>
-    <div class="footer-col">
-      <h4>Kategorien</h4>
-      <ul>
-        <li><a href="#">Liebe</a></li>
-        <li><a href="#">Drama</a></li>
-        <li><a href="#">Thriller</a></li>
-        <li><a href="#">Humor</a></li>
-        <li><a href="#">Alltag</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Info</h4>
-      <ul>
-        <li><a href="#">Über uns</a></li>
-        <li><a href="#">Kontakt</a></li>
-        <li><a href="#">Datenschutz</a></li>
-        <li><a href="#">Impressum</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Folgen</h4>
-      <ul>
-        <li><a href="#">📷 Instagram</a></li>
-        <li><a href="#">▶ YouTube</a></li>
-        <li><a href="#">📘 Facebook</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <span>© 2026 <span class="gold">KurzGeschichten</span> — Alle Rechte vorbehalten</span>
-    <span>Geschichten fürs Herz</span>
-  </div>
-</footer>
-
-<script>
-window.addEventListener('scroll', function() {
-  var nb = document.getElementById('navbar');
-  if(nb) nb.classList.toggle('scrolled', window.scrollY > 50);
-});
-
-function openStory(kat, title, img, body) {
-  var modal = document.getElementById('storyModal');
-  document.getElementById('mKat').textContent = kat;
-  document.getElementById('mTitle').textContent = title;
-  document.getElementById('mImg').src = img;
-  document.getElementById('mBody').innerHTML = body;
-  modal.style.display = 'flex';
-  document.body.style.overflow = 'hidden';
-}
-
-function closeStory() {
-  document.getElementById('storyModal').style.display = 'none';
-  document.body.style.overflow = '';
-}
-
-document.addEventListener('click', function(e) {
-  if(e.target.id === 'storyModal') closeStory();
-});
-
-document.addEventListener('keydown', function(e) {
-  if(e.key === 'Escape') closeStory();
-});
-</script>
-</body>
-</html>
+✕ 
+Liebe
+Drama
+Thriller
+Alle Geschichten
+📷 Instagram
+Geschichte der Woche
+Ein alter Mann kehrt nach 40 Jahren in seine Heimatstadt zurück — und entdeckt, dass das Versprechen, das er einst gab, alles verändert hat.
+📖 Jetzt lesen 
+Neue Geschichten
+Clara fand den Brief zwischen alten Büchern — vergilbt, mit zitternder Handschrift. Absender: Paris, 1962. Sie öffnete ihn mit zitternden Fingern.
+„Mein liebstes Herz, ich schreibe dir zum letzten Mal. Nicht weil ich dich nicht liebe — sondern weil ich dich zu sehr liebe, um zu bleiben.”
+
+Clara las den Brief dreimal. Dann schaute sie auf das Foto ihrer Großmutter, das auf dem Regal stand. Die junge Frau darauf lächelte geheimnisvoll. Als würde sie ein Geheimnis hüten, das 60 Jahre darauf gewartet hatte, gefunden zu werden.
+
+')">
+Der Brief aus Paris
+Liebe4 Min.
+Karl arbeitete seit 35 Jahren in derselben Fabrik. Heute war sein letzter Tag. Er räumte seinen Spind aus — ein Foto seiner Frau, ein alter Schraubenschlüssel, eine Glücksmünze.
+Als er die Fabrikhalle verließ, blieb er kurz stehen. Die Maschinen brummten gleichmäßig weiter. Sie würden ihn nicht vermissen. Aber er — er würde sie vermissen. Das Geräusch. Den Geruch nach Öl und Metall. Die Kollegen.
+
+„Auf Wiedersehen, alter Freund”, flüsterte er und legte die Hand kurz auf die kalte Stahltür. Dann ging er in die Freiheit — die ihn mehr erschreckte als jede Nachtschicht.
+
+')">
+Die letzte Schicht
+Drama3 Min.
+Seit drei Wochen hörte Anna nachts Schritte über ihr. Die Wohnung im dritten Stock stand seit Monaten leer — das wusste sie genau.
+Sie sprach mit dem Hausmeister. Er zuckte die Schultern: „Da wohnt niemand.” Doch die Schritte kamen jede Nacht. Immer um Mitternacht. Immer dieselbe Route: Küche, Flur, Schlafzimmer.
+
+Als Anna eines Abends die Treppe hochging, sah sie Licht unter der Tür. Und auf der Fußmatte: ihre eigenen Hausschuhe, die sie vor einer Woche verloren hatte.
+
+')">
+Der Nachbar
+Thriller5 Min.
+Mit 68 Jahren hatte Gertrud nicht mehr damit gerechnet, sich zu verlieben. Doch dann saß er plötzlich neben ihr in der Volkshochschule — beim Aquarellkurs.
+„Sie malen sehr mutig”, sagte er und schaute auf ihr Bild. „Ich male falsch”, antwortete sie. Er lachte. „Das ist dasselbe.”
+
+Sein Name war Werner. Er war Witwer, wie sie. Er mochte starken Kaffee und schwache Witze. Und er schaute sie an, als wäre sie 30 — was das Beste war, was ihr seit Jahren passiert war.
+
+')">
+Zweiter Frühling
+Liebe4 Min.
+Jedes Jahr zu Weihnachten stellten sie einen extra Stuhl an den Tisch. Für Thomas, der vor fünf Jahren gegangen war — einfach so, mitten im November.
+Die Kinder fragten nie mehr warum. Sie wussten es. Mama brauchte diesen Stuhl. Er war ihre Art zu sagen: Du fehlst. Du bist noch hier.
+
+In diesem Jahr blieb der Stuhl leer — bis um 22 Uhr die Türklingel ging. Und alle zu atmen aufhörten.
+
+')">
+Lesen
+Empfohlen für Sie
+Jeden Morgen um acht Uhr saß sie am Fenster. Mit einer Tasse Tee. Mit demselben Blick in die Ferne. Paul sah sie vom Café aus — jeden Tag, seit drei Jahren.
+Er wusste nichts über sie. Nur dass sie immer pünktlich war, immer allein, und immer so aussah, als würde sie auf jemanden warten, der nie kommt.
+
+An einem Dienstag blieb der Stuhl am Fenster leer. Am Mittwoch auch. Paul bestellte seinen Kaffee und merkte, dass ihm etwas fehlte — jemand, den er nie gekannt hatte.
+
+')">
+★ Top Geschichte
+Liebe · 5 Min. lesen
+Nach 20 Jahren in der Stadt kehrte Elsa ins Dorf zurück. Alles war kleiner als in ihrer Erinnerung. Die Straßen enger, die Häuser niedriger, die Menschen — älter.
+Nur der Bach war gleich geblieben. Er rauschte noch genauso wie damals, als sie als Kind darin ihre Füße badete und glaubte, die Welt würde immer so einfach sein.
+
+Sie setzte sich ans Ufer. Zog die Schuhe aus. Und ließ ihre Füße ins Wasser gleiten. Für einen Moment war sie wieder zehn Jahre alt.
+
+')">
+❤ Sehr beliebt
+Drama · 4 Min. lesen
+Beim Aufräumen des Dachbodens fand Monika ein Foto. Schwarz-weiß, vergilbt. Eine Frau auf einer Parkbank — die genauso aussah wie sie. Dieselben Augen, dasselbe Lächeln.
+Auf der Rückseite stand in alter Schrift: „München, 1943.”
+
+Monika war 1985 geboren. Das war unmöglich. Und doch hielt sie das Foto in zitternden Händen und wusste: Manche Dinge haben keine Erklärung. Sie haben nur eine Geschichte.
+
+')">
+🔥 Diese Woche
+Thriller · 4 Min. lesen
+Heinrich saß im Zug und schaute durch das beschlagene Fenster. 40 Jahre. So lange war er nicht mehr in Feldkirch gewesen...
+')">
+
+Jedes Jahr zu Weihnachten stellten sie einen extra Stuhl an den Tisch...
+')">
+
+Mit 68 Jahren hatte Gertrud nicht mehr damit gerechnet, sich zu verlieben...
+')">
+
+Seit drei Wochen hörte Anna nachts Schritte über ihr...
+')">
+
+Jeden Morgen um acht Uhr saß sie am Fenster...
+')">
+
+Folgen Sie uns auf Instagram
+📷 Jetzt folgen
+
+974B 50+ Täglich
+KurzGeschichten
+Kurzgeschichten, die das Herz berühren. Täglich neue Geschichten über Liebe, Leben und das Menschliche.
+
+Liebe
+Drama
+Thriller
+Humor
+Alltag
+Über uns
+Kontakt
+Datenschutz
+Impressum
+📷 Instagram
+▶ YouTube
+📘 Facebook
+KurzGeschichten — Alle Rechte vorbehalten Geschichten fürs Herz
