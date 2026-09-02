@@ -913,121 +913,32 @@ footer {
 </footer>
 
 <script>
-window.addEventListener('scroll', () => {
-  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+window.addEventListener('scroll', function() {
+  var nb = document.getElementById('navbar');
+  if(nb) nb.classList.toggle('scrolled', window.scrollY > 50);
 });
 
-/* Story data: 9 complete German stories written for mature readers */
-const stories = {
-  s1: {
-    kat: 'Drama',
-    title: 'Das letzte Versprechen',
-    img: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?w=900&q=80',
-    body: `<p>Der Zug rollte gemächlich durch die sanften Hügel, als wäre er ein Schiff auf einem stillen Meer. Heinrich blickte aus dem Fenster und betrachtete die vertrauten Felder, die Bäu[...]
-<p>Damals, an einem heißen Juliabend, standen sie an einer Mauer und sahen in Richtung des Bahnhofs, wo der Dampf die Laternen umspielte. Sie war jung, er war jung, und es gab eine Gewissheit in[...]
-<p>Heinrich wusste, dass er Fehler gemacht hatte. Entscheidungen, die Wege trennten, nicht immer absichtlich, oft aus Mutlosigkeit oder aus falschem Stolz. Doch das Versprechen in seinem Herzen h[...]
-<p>Als der Zug in den kleinen Bahnhof einfuhr, war das Wetter milde, der Geruch von nasser Erde stieg ihm in die Nase. Er stieg aus, ging die Straße entlang, und mit jedem Schritt wurden die Eri[...]
-<p>Sie war älter geworden, ihr Haar von Silber durchzogen, ihre Haltung jedoch noch immer von derselben inneren Ruhe geprägt. Sie trat auf die Schwelle, sah ihn an, und für einen Moment war di[...]
-<p>Sie setzten sich, tranken Tee und begannen zu reden: zunächst über Belangloses, dann über die verlorenen Jahre, und schließlich über das, was unerledigt geblieben war. Heinrich sprach von[...]
-<p>Am Abend gingen sie zum Fluss, dort, wo die Laternen ihr Licht ins Wasser schickten. Heinrich legte seine Hand in ihre, nicht um etwas zurückzufordern, sondern um ein neues Kapitel vorsichtig[...]
-<p>Sie nickte langsam; ihr Lächeln war weniger die Antwort einer jungen Frau, mehr die Zustimmung einer Gefährtin, die die Jahre in sich trug. Die Rückkehr hatte nicht alle Wunden geheilt. Doc[...]
-  },
-  s2: {
-    kat: 'Liebe',
-    title: 'Der Brief aus Paris',
-    img: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=400&q=80',
-    body: `<p>Der Umschlag lag wie ein Relikt in einem Buch, das Clara seit Jahren nicht mehr geöffnet hatte. Sie zog ihn heraus, öffnete ihn mit zögernden Fingern und fand eine Handschrift, d[...]
-<p>Der Brief war von einem Mann, dessen Name ihr in den ersten Sätzen zwar nicht mehr sofort präsent war, dessen Worte jedoch Bilder zeichneten: Paris bei Regen, ein Café am Seine-Ufer, ein Li[...]
-<p>Clara las weiter, und mit jedem Absatz öffnete sich eine Tür zu einer Zeit, in der alles möglich schien. Der Brief war keine Bitte um Verzeihung, sondern ein Angebot: ein Treffen ohne Erwar[...]
-<p>Sie zögerte. Das Leben hatte ihr viel gegeben, und das Wenige, das sie nicht hatte, war kein Zweifel an sich selbst. Dennoch spürte sie eine leise Neugier, die sanft an ihr zog. Sie antworte[...]
-<p>Sie sprachen nicht über Träume, sondern über Alltag, über Dinge, die Risse geheilt, über Jahre, die Spuren hinterlassen hatten. Er hörte ihr zu, ohne zu urteilen; sie hörte ihm zu, ohne[...]
-<p>Zurück in ihrem Dorf trug Clara eine neue Ruhe mit sich. Der Brief aus Paris war kein Wandel, sondern ein Fenster gewesen: eine Erinnerung daran, dass Menschen einander finden können, auch s[...]
-  },
-  s3: {
-    kat: 'Drama',
-    title: 'Die letzte Schicht',
-    img: 'https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?w=400&q=80',
-    body: `<p>Karl hatte seine Schicht stets mit einem Ritual begonnen: eine Tasse Kaffee, ein Blick auf die Uhr, ein kurzes Nicken in Richtung der Kollegen. Es waren die kleinen Dinge, die den R[...]
-<p>Die Fabrik hatte ihn geformt: früh aufstehen, präzise Bewegungen, ein Verständnis für das, was Bestand hat. Seine Hände kannten die Werkzeuge, seine Augen die Maschinen. Abschied von dies[...]
-<p>Er nahm die Maschine auseinander, als sei es ein vertrautes Buch, und setzte sie wieder zusammen, um sich zu vergewissern, dass er alles mitgenommen hatte, was es zu lernen gab. Kollegen kamen[...]
-<p>Zuhause wartete seine Frau in ihrem Garten, die Hände in der Erde, und ein Duft von frischem Brot empfing ihn. Sie nahm seine Hand ohne viele Worte, und das genügte. Die folgenden Wochen war[...]
-<p>Die letzte Schicht war kein endgültiges Ende gewesen; sie war eine Schwelle. Karl entdeckte, dass das Leben in anderen Rhythmen weiterspielen konnte — langsamer, aber nicht minder reich. Un[...]
-  },
-  s4: {
-    kat: 'Thriller',
-    title: 'Der Nachbar',
-    img: 'https://images.unsplash.com/photo-1448375240586-882707db888b?w=400&q=80',
-    body: `<p>Anna bemerkte zuerst die kleinen Dinge: ein Schatten, der spätabends am Fenster vorbeizog, die Fußspuren, die morgens frischer wirkten als zuvor. Die Zettel kamen sachte, ohne Abs[...]
-<p>Ihr Nachbar wirkte auf den ersten Blick harmlos: ein Mann mittleren Alters, gepflegt, immer freundlich. Doch in den beiläufigen Bemerkungen lag etwas, das Anna nicht greifen konnte — eine A[...]
-<p>Eines Abends fand sie ein Foto auf der Fußmatte: unscharf, ein Ausschnitt ihres Balkons, ein Stück ihres Gartens. In der Ecke des Bildes war eine Gestalt, fast verschwommen, die etwas beobac[...]
-<p>Die Situation eskalierte, ohne dass es zu einem dramatischen Höhepunkt kam. Vielmehr war es ein langer Alltag voller Vorsicht: Schritte werden lauter gehört, Pakete öffnet man in Begleitung[...]
-<p>Er begann zu erzählen — von Fehlern in seiner Vergangenheit, von einer Einsamkeit, die ihn so sehr geformt hatte, dass sein Verhalten ungerechtfertigt und doch erklärbar wurde. Er sprach l[...]
-<p>Anna lernte daraus: Wachsamkeit ist wichtig, aber so ist auch das Gespräch. Manchmal sind es genau diese Begegnungen — unbequem und notwendig — die verhindern, dass Misstrauen in Angst um[...]
-  },
-  s5: {
-    kat: 'Liebe',
-    title: 'Zweiter Frühling',
-    img: 'https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=400&q=80',
-    body: `<p>Gertrud dachte lange, ihr Leben sei ein Kapitel, das man am Ende zuschlägt und dann behutsam ins Regal stellt. Die Kinder waren erwachsen, die Alltagsroutine hatte ihren eigenen Ta[...]
-<p>Er war nicht jung. Er hatte Fältchen um die Augen und eine ruhige Art, Wort und Blick zu führen. Sie trafen sich zufällig am Gemüsestand, dann wieder im Park, und aus flüchtigen Gespräch[...]
-<p>Sie verbrachten Nachmittage mit Spaziergängen, lasen gemeinsam in alten Büchern, besuchten kleine Ausstellungen. Es waren nicht die großen Gesten, die ihre Beziehung trugen, sondern die kle[...]
-<p>Ihre Freunde reagierten unterschiedlich. Manche schüttelten den Kopf, andere lächelten mit Verständnis. Gertrud merkte, dass Alter auch Freiheit bedeutet — die Freiheit, zu wählen, was e[...]
-<p>Und als die Jahre vergingen, blieb die Entdeckung: Liebe kann neu beginnen, leise und doch kraftvoll. Es ist ein Geschenk, das lateinische Wort für Alter zu übersetzen: nicht als Ende, sonde[...]
-  },
-  s6: {
-    kat: 'Drama',
-    title: 'Der leere Stuhl',
-    img: 'https://images.unsplash.com/photo-1574267432553-4b4628081c31?w=400&q=80',
-    body: `<p>Die Tradition eines leeren Stuhls am Tisch war älter als die meisten Anwesenden erinnern konnten. Wenn die Familie an Feiertagen zusammenkam, blieb ein Platz frei — aus Respekt v[...]
-<p>Es war eine einfache Geste, doch sie trug die Schwere unverarbeiteter Geschichten mit sich. Am Tisch wurden Erinnerungen wachgerufen, Fehler besprochen, und die Person, die den leeren Stuhl f�[...]
-<p>Am Abend löste sich eine Last von den Schultern. Die Lücke, die einst nur Abwesenheit signalisiert hatte, wurde zu einem Raum der Begegnung. Der leere Stuhl blieb als Symbol bestehen, aber d[...]
-  },
-  s7: {
-    kat: 'Liebe',
-    title: 'Die Frau am Fenster',
-    img: 'https://images.unsplash.com/photo-1485846234645-a62644f84728?w=700&q=80',
-    body: `<p>Jeden Morgen setzte sie sich ans Fenster mit einer Tasse Tee und beobachtete die Straße, als würden dort Geschichten vorüberziehen, die sie in kleinen Stücken sammelte. Die Nach[...]
-<p>Früher hatte sie Klavier gespielt, erzählte sie manchmal, und ihr Lächeln verriet, dass Musik in ihr wie ein Schatz aufbewahrt war. Die Kinder der Straße kletterten oft an ihrem Fenster vo[...]
-<p>Ein junger Mann, neu im Haus, brachte ihr eines Tages eine kleine Pflanze. Sie nahm das Geschenk an und stellte es auf die Fensterbank. Es entstand ein freundschaftliches Gespräch, bei dem si[...]
-<p>Die Frau am Fenster war kein Geheimnis; sie war ein stiller Anker, der in einer lauten Welt ein Zuhause für kleine Geschichten bot.</p>`
-  },
-  s8: {
-    kat: 'Drama',
-    title: 'Heimkehr',
-    img: 'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=700&q=80',
-    body: `<p>Elsa kehrte zurück, nicht aus Kapitulation, sondern aus dem Wunsch, herauszufinden, woher sie kam. Die Stadt ihrer Kindheit war anders, doch vertraut: Die Bäckerei am Marktplatz, [...]
-<p>Sie war gegangen, um die Welt zu sehen, und hatte Orte gesehen, die sie lehrten, dass Heimat nicht an einen Ort gebunden ist, sondern an Menschen und Erinnerungen. Als sie nun wiederkehrte, fa[...]
-<p>Die Heimkehr war kein Triumph, sondern ein langsames Annähern. Elsa setzte sich auf die Churchbank, hörte den Vogelstimmen zu und dachte darüber nach, wie viel man in Jahren sammeln kann: [...]
-[...]`
-};
-
-// open modal logic
-const modalBg = document.getElementById('storyModal');
-const modalBox = document.querySelector('.modal-box');
-const closeBtn = document.querySelector('.modal-close');
-
-function openModal(storyId) {
-  const s = stories[storyId];
-  if (!s) return;
-  document.getElementById('mImg').src = s.img;
-  document.getElementById('mKat').textContent = s.kat;
-  document.getElementById('mTitle').textContent = s.title;
-  document.getElementById('mBody').innerHTML = s.body;
-  modalBg.classList.add('active');
+function openStory(kat, title, img, body) {
+  var modal = document.getElementById('storyModal');
+  document.getElementById('mKat').textContent = kat;
+  document.getElementById('mTitle').textContent = title;
+  document.getElementById('mImg').src = img;
+  document.getElementById('mBody').innerHTML = body;
+  modal.style.display = 'flex';
   document.body.style.overflow = 'hidden';
 }
 
-function closeModal() {
-  modalBg.classList.remove('active');
+function closeStory() {
+  document.getElementById('storyModal').style.display = 'none';
   document.body.style.overflow = '';
 }
 
-closeBtn.addEventListener('click', closeModal);
-modalBg.addEventListener('click', (e) => { if (e.target === modalBg) closeModal(); });
+document.addEventListener('click', function(e) {
+  if(e.target.id === 'storyModal') closeStory();
+});
 
-// attach open handlers
-document.querySelectorAll('[data-story-id]').forEach(el => {
-  el.addEventListener('click', () => openModal(el.getAttribute('data-story-id')));
+document.addEventListener('keydown', function(e) {
+  if(e.key === 'Escape') closeStory();
 });
 </script>
 </body>
