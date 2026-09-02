@@ -517,7 +517,7 @@ nav.scrolled { background: rgba(10,10,10,0.98); }
 .modal-body p { margin-bottom: 18px; }
 
 .modal-close {
-  position: absolute;
+  position: fixed;
   top: 16px; right: 20px;
   background: rgba(0,0,0,0.6);
   border: none;
@@ -527,7 +527,7 @@ nav.scrolled { background: rgba(10,10,10,0.98); }
   padding: 6px 14px;
   border-radius: 4px;
   transition: background 0.2s;
-  z-index: 10;
+  z-index: 1001;
 }
 
 .modal-close:hover { background: var(--gold); color: var(--bg); }
@@ -923,150 +923,111 @@ const stories = {
     kat: 'Drama',
     title: 'Das letzte Versprechen',
     img: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?w=900&q=80',
-    body: `<p>Der Zug rollte gemächlich durch die sanften Hügel, als wäre er ein Schiff auf einem stillen Meer. Heinrich blickte aus dem Fenster und betrachtete die vertrauten Felder, die Bäume, die kleinen Dörfer, in denen die Zeit langsamer ging. Vierzig Jahre lagen zwischen dem Mann, der jetzt auf dem Sitz saß, und dem Jungen, der damals ein Versprechen gegeben hatte.</p>
-<p>Damals, an einem heißen Juliabend, standen sie an einer Mauer und sahen in Richtung des Bahnhofs, wo der Dampf die Laternen umspielte. Sie war jung, er war jung, und es gab eine Gewissheit in der Luft, die sich heute wie eine Fremde anfühlte. „Warte auf mich“, hatte er gesagt, und sie hatte gelächelt, die Augen halb geschlossen, als würde sie etwas aufbewahren. Die Jahre hatten alles möglich erscheinen lassen und doch so vieles kostbar verloren.</p>
-<p>Heinrich wusste, dass er Fehler gemacht hatte. Entscheidungen, die Wege trennten, nicht immer absichtlich, oft aus Mutlosigkeit oder aus falschem Stolz. Doch das Versprechen in seinem Herzen hatte einen langen Schatten geworfen, der ihn nie ganz losgelassen hatte. Im Laufe der Zeit war es zu einer stillen Verpflichtung geworden, die er nicht erklären konnte, sondern nur fühlte, wie man ein altes Foto in den Händen hält: brüchig, doch voller Bedeutung.</p>
-<p>Als der Zug in den kleinen Bahnhof einfuhr, war das Wetter milde, der Geruch von nasser Erde stieg ihm in die Nase. Er stieg aus, ging die Straße entlang, und mit jedem Schritt wurden die Erinnerungen klarer. Das Haus war anders gestrichen, aber die Eiche am Ende des Gartens stand noch an derselben Stelle. Im Fenster sah er eine vage Silhouette, dann die Tür, die sich öffnete.</p>
-<p>Sie war älter geworden, ihr Haar von Silber durchzogen, ihre Haltung jedoch noch immer von derselben inneren Ruhe geprägt. Sie trat auf die Schwelle, sah ihn an, und für einen Moment war die Zeit nur ein dünner Faden zwischen ihnen. Keine großen Worte, keine dramatischen Gesten — nur das Erkennen zweier Menschen, die sich in ihren Leben vielfach verändert hatten, aber noch immer etwas gemeinsam trugen.</p>
-<p>Sie setzten sich, tranken Tee und begannen zu reden: zunächst über Belangloses, dann über die verlorenen Jahre, und schließlich über das, was unerledigt geblieben war. Heinrich sprach von Reue, von dem Wunsch, einiges wieder gut zu machen. Sie hörte zu, ohne zu verurteilen, und mit jedem Satz, den sie wechselten, löste sich eine alte Spannung. Es war kein märchenhaftes Wiedersehen, kein ordnendes Urteil, sondern ein ehrliches Gespräch zwischen zwei Menschen, die gelernt hatten, dass Leben nicht immer linear verläuft.</p>
-<p>Am Abend gingen sie zum Fluss, dort, wo die Laternen ihr Licht ins Wasser schickten. Heinrich legte seine Hand in ihre, nicht um etwas zurückzufordern, sondern um ein neues Kapitel vorsichtig zu beginnen. Das Versprechen, das er ihr damals gegeben hatte, war nicht so sehr wiederholt worden — es hatte sich verwandelt. Aus dem fordernden „Warte auf mich“ war ein Angebot geworden: „Wenn du willst, lasst uns versuchen, es noch einmal zu probieren, ohne die Illusion der Unendlichkeit, dafür mit Ernst und Geduld.“</p>
-<p>Sie nickte langsam; ihr Lächeln war weniger die Antwort einer jungen Frau, mehr die Zustimmung einer Gefährtin, die die Jahre in sich trug. Die Rückkehr hatte nicht alle Wunden geheilt. Doch sie hatten etwas Größeres gewonnen: die Fähigkeit, einander erneut zuzuhören, mit einer Reife, die nur das Leben schenken kann. Heinrich stieg am nächsten Morgen in den Zug zurück, nicht mehr mit der Last eines unausgesprochenen Versprechens, sondern mit der Hoffnung auf eine Zukunft, die behutsam wachsen durfte.</p>`
+    body: `<p>Der Zug rollte gemächlich durch die sanften Hügel, als wäre er ein Schiff auf einem stillen Meer. Heinrich blickte aus dem Fenster und betrachtete die vertrauten Felder, die Bäu[...]
+<p>Damals, an einem heißen Juliabend, standen sie an einer Mauer und sahen in Richtung des Bahnhofs, wo der Dampf die Laternen umspielte. Sie war jung, er war jung, und es gab eine Gewissheit in[...]
+<p>Heinrich wusste, dass er Fehler gemacht hatte. Entscheidungen, die Wege trennten, nicht immer absichtlich, oft aus Mutlosigkeit oder aus falschem Stolz. Doch das Versprechen in seinem Herzen h[...]
+<p>Als der Zug in den kleinen Bahnhof einfuhr, war das Wetter milde, der Geruch von nasser Erde stieg ihm in die Nase. Er stieg aus, ging die Straße entlang, und mit jedem Schritt wurden die Eri[...]
+<p>Sie war älter geworden, ihr Haar von Silber durchzogen, ihre Haltung jedoch noch immer von derselben inneren Ruhe geprägt. Sie trat auf die Schwelle, sah ihn an, und für einen Moment war di[...]
+<p>Sie setzten sich, tranken Tee und begannen zu reden: zunächst über Belangloses, dann über die verlorenen Jahre, und schließlich über das, was unerledigt geblieben war. Heinrich sprach von[...]
+<p>Am Abend gingen sie zum Fluss, dort, wo die Laternen ihr Licht ins Wasser schickten. Heinrich legte seine Hand in ihre, nicht um etwas zurückzufordern, sondern um ein neues Kapitel vorsichtig[...]
+<p>Sie nickte langsam; ihr Lächeln war weniger die Antwort einer jungen Frau, mehr die Zustimmung einer Gefährtin, die die Jahre in sich trug. Die Rückkehr hatte nicht alle Wunden geheilt. Doc[...]
   },
   s2: {
     kat: 'Liebe',
     title: 'Der Brief aus Paris',
     img: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=400&q=80',
-    body: `<p>Der Umschlag lag wie ein Relikt in einem Buch, das Clara seit Jahren nicht mehr geöffnet hatte. Sie zog ihn heraus, öffnete ihn mit zögernden Fingern und fand eine Handschrift, die sie erinnerte: eine schwungvolle, zugleich unsichere Schrift, wie man sie von Menschen kennt, die in jungen Jahren große Träume hatten.</p>
-<p>Der Brief war von einem Mann, dessen Name ihr in den ersten Sätzen zwar nicht mehr sofort präsent war, dessen Worte jedoch Bilder zeichneten: Paris bei Regen, ein Café am Seine-Ufer, ein Lied, das zwischen den Tischen hing. Er schrieb, ohne Dringlichkeit, von kleinen Beobachtungen, von der Art, wie die Stadt alte Menschen lächelnd in ihre Cafés empfängt. Und dann, in der Mitte des Briefes, wurden die Zeilen persönlicher. Er sprach von der Erinnerung an ein gemeinsames Versprechen, von der Ahnung, dass manche Verbindungen nicht mit der Zeit sterben, sondern nur tiefer werden.</p>
-<p>Clara las weiter, und mit jedem Absatz öffnete sich eine Tür zu einer Zeit, in der alles möglich schien. Der Brief war keine Bitte um Verzeihung, sondern ein Angebot: ein Treffen ohne Erwartungen, bei dem zwei Menschen einander erzählen konnten, wer sie geworden waren. Er schrieb nicht um zu beeindrucken, sondern um ehrlich zu fragen, ob eine Begegnung möglich sei — einfach so, um zu wissen.</p>
-<p>Sie zögerte. Das Leben hatte ihr viel gegeben, und das Wenige, das sie nicht hatte, war kein Zweifel an sich selbst. Dennoch spürte sie eine leise Neugier, die sanft an ihr zog. Sie antwortete, und das Schreiben erwies sich als etwas sehr Menschliches: ein langsames Zurückfinden in eine Sprache, die einst den Puls beschleunigte. Das Treffen in Paris war kein Film, es war ein Nachmittag in einem kleinen Café, gefüllt mit Bedachtheit und ehrlicher Neugier.</p>
-<p>Sie sprachen nicht über Träume, sondern über Alltag, über Dinge, die Risse geheilt, über Jahre, die Spuren hinterlassen hatten. Er hörte ihr zu, ohne zu urteilen; sie hörte ihm zu, ohne zu bewerten. Am Ende des Tages verabschiedeten sie sich ohne großen Pathos. Aber beide wussten: Sie hatten einander gesehen, nicht als ein Ideal, sondern als Menschen mit Wunden und mit einer Fähigkeit zur Zärtlichkeit.</p>
-<p>Zurück in ihrem Dorf trug Clara eine neue Ruhe mit sich. Der Brief aus Paris war kein Wandel, sondern ein Fenster gewesen: eine Erinnerung daran, dass Menschen einander finden können, auch spät im Leben; dass es kein Versäumnis ist, sondern eine Chance, die noch in der Luft liegt.</p>`
+    body: `<p>Der Umschlag lag wie ein Relikt in einem Buch, das Clara seit Jahren nicht mehr geöffnet hatte. Sie zog ihn heraus, öffnete ihn mit zögernden Fingern und fand eine Handschrift, d[...]
+<p>Der Brief war von einem Mann, dessen Name ihr in den ersten Sätzen zwar nicht mehr sofort präsent war, dessen Worte jedoch Bilder zeichneten: Paris bei Regen, ein Café am Seine-Ufer, ein Li[...]
+<p>Clara las weiter, und mit jedem Absatz öffnete sich eine Tür zu einer Zeit, in der alles möglich schien. Der Brief war keine Bitte um Verzeihung, sondern ein Angebot: ein Treffen ohne Erwar[...]
+<p>Sie zögerte. Das Leben hatte ihr viel gegeben, und das Wenige, das sie nicht hatte, war kein Zweifel an sich selbst. Dennoch spürte sie eine leise Neugier, die sanft an ihr zog. Sie antworte[...]
+<p>Sie sprachen nicht über Träume, sondern über Alltag, über Dinge, die Risse geheilt, über Jahre, die Spuren hinterlassen hatten. Er hörte ihr zu, ohne zu urteilen; sie hörte ihm zu, ohne[...]
+<p>Zurück in ihrem Dorf trug Clara eine neue Ruhe mit sich. Der Brief aus Paris war kein Wandel, sondern ein Fenster gewesen: eine Erinnerung daran, dass Menschen einander finden können, auch s[...]
   },
   s3: {
     kat: 'Drama',
     title: 'Die letzte Schicht',
     img: 'https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?w=400&q=80',
-    body: `<p>Karl hatte seine Schicht stets mit einem Ritual begonnen: eine Tasse Kaffee, ein Blick auf die Uhr, ein kurzes Nicken in Richtung der Kollegen. Es waren die kleinen Dinge, die den Rhythmus seines Lebens bestimmten. An diesem Morgen war jedoch etwas anders. Die Kollegen hatten Kuchen mitgebracht, die Maschinen wirkten vertrauter als je zuvor, und doch spürte Karl eine Unruhe, die sich nicht mit Routine beruhigen ließ. Es war seine letzte Schicht.</p>
-<p>Die Fabrik hatte ihn geformt: früh aufstehen, präzise Bewegungen, ein Verständnis für das, was Bestand hat. Seine Hände kannten die Werkzeuge, seine Augen die Maschinen. Abschied von dieser Welt bedeutete Abschied von einem Teil seiner Identität. Er dachte an die bevorstehenden Tage, an eine leere Werkbank, an die Zeit, die nun frei werden würde. Aber da war auch eine leise Angst vor dem Stillstand.</p>
-<p>Er nahm die Maschine auseinander, als sei es ein vertrautes Buch, und setzte sie wieder zusammen, um sich zu vergewissern, dass er alles mitgenommen hatte, was es zu lernen gab. Kollegen kamen, erzählten Anekdoten aus den Jahrzehnten, lachten über Pannen und teilten Erinnerungen. Es war ein Abend voller Wärme und Melancholie. Als die Lichter gedimmt wurden, stand Karl allein und sah dem leeren Hallenraum nach.</p>
-<p>Zuhause wartete seine Frau in ihrem Garten, die Hände in der Erde, und ein Duft von frischem Brot empfing ihn. Sie nahm seine Hand ohne viele Worte, und das genügte. Die folgenden Wochen waren ein vorsichtiges Erkunden: Karl fing wieder an zu lesen, besuchte die Enkel, die ihm Geschichten von der Welt erzählten, die sie heute kannten. Er stellte fest, dass er die kleinen Dinge vermisste: das Geräusch eines gut reparierten Fahrrads, das Gefühl von Holz unter den Fingern. So richtete er sich in einer Werkbank im Schuppen ein, reparierte Möbel, half Freunden, und fand darin einen neuen Sinn.</p>
-<p>Die letzte Schicht war kein endgültiges Ende gewesen; sie war eine Schwelle. Karl entdeckte, dass das Leben in anderen Rhythmen weiterspielen konnte — langsamer, aber nicht minder reich. Und am Ende verstand er, dass Arbeit mehr ist als Pflicht: Sie ist Verbindung, Erinnerung und manchmal ein Fundament für das, was noch kommt.</p>`
+    body: `<p>Karl hatte seine Schicht stets mit einem Ritual begonnen: eine Tasse Kaffee, ein Blick auf die Uhr, ein kurzes Nicken in Richtung der Kollegen. Es waren die kleinen Dinge, die den R[...]
+<p>Die Fabrik hatte ihn geformt: früh aufstehen, präzise Bewegungen, ein Verständnis für das, was Bestand hat. Seine Hände kannten die Werkzeuge, seine Augen die Maschinen. Abschied von dies[...]
+<p>Er nahm die Maschine auseinander, als sei es ein vertrautes Buch, und setzte sie wieder zusammen, um sich zu vergewissern, dass er alles mitgenommen hatte, was es zu lernen gab. Kollegen kamen[...]
+<p>Zuhause wartete seine Frau in ihrem Garten, die Hände in der Erde, und ein Duft von frischem Brot empfing ihn. Sie nahm seine Hand ohne viele Worte, und das genügte. Die folgenden Wochen war[...]
+<p>Die letzte Schicht war kein endgültiges Ende gewesen; sie war eine Schwelle. Karl entdeckte, dass das Leben in anderen Rhythmen weiterspielen konnte — langsamer, aber nicht minder reich. Un[...]
   },
   s4: {
     kat: 'Thriller',
     title: 'Der Nachbar',
     img: 'https://images.unsplash.com/photo-1448375240586-882707db888b?w=400&q=80',
-    body: `<p>Anna bemerkte zuerst die kleinen Dinge: ein Schatten, der spätabends am Fenster vorbeizog, die Fußspuren, die morgens frischer wirkten als zuvor. Die Zettel kamen sachte, ohne Absender, mit kurzen Sätzen, die mehr wissen wollten, als sie preisgaben. Zuerst dachte Anna an einen Streich eines Jugendlichen. Doch je länger die Zettel blieben, desto mehr wuchs ein Gefühl der Unruhe in ihr.</p>
-<p>Ihr Nachbar wirkte auf den ersten Blick harmlos: ein Mann mittleren Alters, gepflegt, immer freundlich. Doch in den beiläufigen Bemerkungen lag etwas, das Anna nicht greifen konnte — eine Art Interesse, das über Nachbarschaftlichkeit hinausging. Sie begann, Zeiten und Muster zu notieren, sammelte die Zettel und legte sie in eine Schachtel, wie Beweise, die sich langsam zu einem Bild fügten.</p>
-<p>Eines Abends fand sie ein Foto auf der Fußmatte: unscharf, ein Ausschnitt ihres Balkons, ein Stück ihres Gartens. In der Ecke des Bildes war eine Gestalt, fast verschwommen, die etwas beobachtete. Anna brachte das Foto zur Polizei. Die Beamten nickten, gaben Ratschläge zu Schlössern und Lichtern, doch das Gefühl blieb. Sie begann, die Vorhänge zu zuziehen, ließ das Licht brennen. Das Leben verengte sich auf das Zuhause, und die Welt erschien fremder.</p>
-<p>Die Situation eskalierte, ohne dass es zu einem dramatischen Höhepunkt kam. Vielmehr war es ein langer Alltag voller Vorsicht: Schritte werden lauter gehört, Pakete öffnet man in Begleitung, das Telefon wird zum Zufluchtsort. Dann, eines Nachts, klingelte es an ihrer Tür. Als sie öffnete, stand ihr Nachbar dort, die Hände leer, das Gesicht ernst. Er bat um ein Gespräch.</p>
-<p>Er begann zu erzählen — von Fehlern in seiner Vergangenheit, von einer Einsamkeit, die ihn so sehr geformt hatte, dass sein Verhalten ungerechtfertigt und doch erklärbar wurde. Er sprach leise, ohne Ausflüchte. Anna hörte zu, misstrauisch, aber auch neugierig auf die Wahrheit hinter seinem Verhalten. Am Ende des Gesprächs veränderte sich nichts von heute auf morgen. Vertrauen wächst nicht aus einem Geständnis; es muss neu verdient werden. Aber es gab einen Bruch in der Eskalation, eine Möglichkeit, die Dinge anders anzugehen: mit Grenzen, aber auch mit menschlicher Klarheit.</p>
-<p>Anna lernte daraus: Wachsamkeit ist wichtig, aber so ist auch das Gespräch. Manchmal sind es genau diese Begegnungen — unbequem und notwendig — die verhindern, dass Misstrauen in Angst umschlägt.</p>`
+    body: `<p>Anna bemerkte zuerst die kleinen Dinge: ein Schatten, der spätabends am Fenster vorbeizog, die Fußspuren, die morgens frischer wirkten als zuvor. Die Zettel kamen sachte, ohne Abs[...]
+<p>Ihr Nachbar wirkte auf den ersten Blick harmlos: ein Mann mittleren Alters, gepflegt, immer freundlich. Doch in den beiläufigen Bemerkungen lag etwas, das Anna nicht greifen konnte — eine A[...]
+<p>Eines Abends fand sie ein Foto auf der Fußmatte: unscharf, ein Ausschnitt ihres Balkons, ein Stück ihres Gartens. In der Ecke des Bildes war eine Gestalt, fast verschwommen, die etwas beobac[...]
+<p>Die Situation eskalierte, ohne dass es zu einem dramatischen Höhepunkt kam. Vielmehr war es ein langer Alltag voller Vorsicht: Schritte werden lauter gehört, Pakete öffnet man in Begleitung[...]
+<p>Er begann zu erzählen — von Fehlern in seiner Vergangenheit, von einer Einsamkeit, die ihn so sehr geformt hatte, dass sein Verhalten ungerechtfertigt und doch erklärbar wurde. Er sprach l[...]
+<p>Anna lernte daraus: Wachsamkeit ist wichtig, aber so ist auch das Gespräch. Manchmal sind es genau diese Begegnungen — unbequem und notwendig — die verhindern, dass Misstrauen in Angst um[...]
   },
   s5: {
     kat: 'Liebe',
     title: 'Zweiter Frühling',
     img: 'https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=400&q=80',
-    body: `<p>Gertrud dachte lange, ihr Leben sei ein Kapitel, das man am Ende zuschlägt und dann behutsam ins Regal stellt. Die Kinder waren erwachsen, die Alltagsroutine hatte ihren eigenen Takt. Sie ging auf den Markt, wusch die Wäsche, lachte mit Nachbarinnen. Doch dann bemerkte sie eines Morgens, wie die Sonne anders auf ihrem Gesicht lag, und etwas in ihr öffnete sich.</p>
-<p>Er war nicht jung. Er hatte Fältchen um die Augen und eine ruhige Art, Wort und Blick zu führen. Sie trafen sich zufällig am Gemüsestand, dann wieder im Park, und aus flüchtigen Gesprächen wurden längere Unterhaltungen. Es gab kein Hast, keine Dringlichkeit, nur eine wachsende Neugier füreinander. Das war anders als in ihren frühen Jahren: kein Feuerwerk, eher ein Leuchten, das langsam zunahm.</p>
-<p>Sie verbrachten Nachmittage mit Spaziergängen, lasen gemeinsam in alten Büchern, besuchten kleine Ausstellungen. Es waren nicht die großen Gesten, die ihre Beziehung trugen, sondern die kleine Aufmerksamkeit: ein Anruf, ein gemeinsames Frühstück, die Rücksicht auf die Zeiten, in denen die Kinder kamen. Mit der Zeit wuchs eine Vertrautheit, die nicht Besitz sinnte, sondern Zuwendung.</p>
-<p>Ihre Freunde reagierten unterschiedlich. Manche schüttelten den Kopf, andere lächelten mit Verständnis. Gertrud merkte, dass Alter auch Freiheit bedeutet — die Freiheit, zu wählen, was einem guttut, ohne den Druck, Erwartungen zu erfüllen. Der zweite Frühling war kein Widerspruch zum Gelebten, sondern eine Ergänzung.</p>
-<p>Und als die Jahre vergingen, blieb die Entdeckung: Liebe kann neu beginnen, leise und doch kraftvoll. Es ist ein Geschenk, das lateinische Wort für Alter zu übersetzen: nicht als Ende, sondern als Reifung. Gertrud genoss die Reife in vollen Zügen.</p>`
+    body: `<p>Gertrud dachte lange, ihr Leben sei ein Kapitel, das man am Ende zuschlägt und dann behutsam ins Regal stellt. Die Kinder waren erwachsen, die Alltagsroutine hatte ihren eigenen Ta[...]
+<p>Er war nicht jung. Er hatte Fältchen um die Augen und eine ruhige Art, Wort und Blick zu führen. Sie trafen sich zufällig am Gemüsestand, dann wieder im Park, und aus flüchtigen Gespräch[...]
+<p>Sie verbrachten Nachmittage mit Spaziergängen, lasen gemeinsam in alten Büchern, besuchten kleine Ausstellungen. Es waren nicht die großen Gesten, die ihre Beziehung trugen, sondern die kle[...]
+<p>Ihre Freunde reagierten unterschiedlich. Manche schüttelten den Kopf, andere lächelten mit Verständnis. Gertrud merkte, dass Alter auch Freiheit bedeutet — die Freiheit, zu wählen, was e[...]
+<p>Und als die Jahre vergingen, blieb die Entdeckung: Liebe kann neu beginnen, leise und doch kraftvoll. Es ist ein Geschenk, das lateinische Wort für Alter zu übersetzen: nicht als Ende, sonde[...]
   },
   s6: {
     kat: 'Drama',
     title: 'Der leere Stuhl',
     img: 'https://images.unsplash.com/photo-1574267432553-4b4628081c31?w=400&q=80',
-    body: `<p>Die Tradition eines leeren Stuhls am Tisch war älter als die meisten Anwesenden erinnern konnten. Wenn die Familie an Feiertagen zusammenkam, blieb ein Platz frei — aus Respekt vor denen, die nicht dabei sein konnten. In diesem Jahr entschied die Gastgeberin, den Stuhl bewusst jemandem anzubieten, der sonst immer fern blieb.</p>
-<p>Es war eine einfache Geste, doch sie trug die Schwere unverarbeiteter Geschichten mit sich. Am Tisch wurden Erinnerungen wachgerufen, Fehler besprochen, und die Person, die den leeren Stuhl füllte, erzählte von Verlusten und verpassten Chancen. Zuhören wurde zur Kunst. Niemand suchte nach Schuld; vielmehr ging es um das Verständnis, das entsteht, wenn man die Geschichten der Anderen tatsächlich hört.</p>
-<p>Am Abend löste sich eine Last von den Schultern. Die Lücke, die einst nur Abwesenheit signalisiert hatte, wurde zu einem Raum der Begegnung. Der leere Stuhl blieb als Symbol bestehen, aber die Bedeutung hatte sich verändert: Aus dem Vermeiden war ein Annehmen geworden.</p>`
+    body: `<p>Die Tradition eines leeren Stuhls am Tisch war älter als die meisten Anwesenden erinnern konnten. Wenn die Familie an Feiertagen zusammenkam, blieb ein Platz frei — aus Respekt v[...]
+<p>Es war eine einfache Geste, doch sie trug die Schwere unverarbeiteter Geschichten mit sich. Am Tisch wurden Erinnerungen wachgerufen, Fehler besprochen, und die Person, die den leeren Stuhl f�[...]
+<p>Am Abend löste sich eine Last von den Schultern. Die Lücke, die einst nur Abwesenheit signalisiert hatte, wurde zu einem Raum der Begegnung. Der leere Stuhl blieb als Symbol bestehen, aber d[...]
   },
   s7: {
     kat: 'Liebe',
     title: 'Die Frau am Fenster',
     img: 'https://images.unsplash.com/photo-1485846234645-a62644f84728?w=700&q=80',
-    body: `<p>Jeden Morgen setzte sie sich ans Fenster mit einer Tasse Tee und beobachtete die Straße, als würden dort Geschichten vorüberziehen, die sie in kleinen Stücken sammelte. Die Nachbarn nannten sie die Frau am Fenster, einige schrieben ihr Abenteuer zu, andere hielten sie schlicht für eine Frau, die gern still war. Die Wahrheit lag irgendwo dazwischen: Sie sammelte Erinnerungen.</p>
-<p>Früher hatte sie Klavier gespielt, erzählte sie manchmal, und ihr Lächeln verriet, dass Musik in ihr wie ein Schatz aufbewahrt war. Die Kinder der Straße kletterten oft an ihrem Fenster vorbei, und sie gab ihnen Süßigkeiten, doch am liebsten hörte sie zu, wenn jemand von seinem Tag berichtete. Es war eine Fähigkeit, zuzuhören, die viele in dieser schnellen Zeit verloren hatten.</p>
-<p>Ein junger Mann, neu im Haus, brachte ihr eines Tages eine kleine Pflanze. Sie nahm das Geschenk an und stellte es auf die Fensterbank. Es entstand ein freundschaftliches Gespräch, bei dem sie Geschichten austauschten: von Verlusten, von Reisen, von der Kunst, still zu leben. Sie wurde für ihn zu einer Vertrauten, für die Kinder zu einer freundlichen Präsenz, und für die Nachbarschaft zu einem ruhigen Mittelpunkt.</p>
+    body: `<p>Jeden Morgen setzte sie sich ans Fenster mit einer Tasse Tee und beobachtete die Straße, als würden dort Geschichten vorüberziehen, die sie in kleinen Stücken sammelte. Die Nach[...]
+<p>Früher hatte sie Klavier gespielt, erzählte sie manchmal, und ihr Lächeln verriet, dass Musik in ihr wie ein Schatz aufbewahrt war. Die Kinder der Straße kletterten oft an ihrem Fenster vo[...]
+<p>Ein junger Mann, neu im Haus, brachte ihr eines Tages eine kleine Pflanze. Sie nahm das Geschenk an und stellte es auf die Fensterbank. Es entstand ein freundschaftliches Gespräch, bei dem si[...]
 <p>Die Frau am Fenster war kein Geheimnis; sie war ein stiller Anker, der in einer lauten Welt ein Zuhause für kleine Geschichten bot.</p>`
   },
   s8: {
     kat: 'Drama',
     title: 'Heimkehr',
     img: 'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=700&q=80',
-    body: `<p>Elsa kehrte zurück, nicht aus Kapitulation, sondern aus dem Wunsch, herauszufinden, woher sie kam. Die Stadt ihrer Kindheit war anders, doch vertraut: Die Bäckerei am Marktplatz, die alte Churchbank, die gepflasterte Straße mit den Efeuranken.</p>
-<p>Sie war gegangen, um die Welt zu sehen, und hatte Orte gesehen, die sie lehrten, dass Heimat nicht an einen Ort gebunden ist, sondern an Menschen und Erinnerungen. Als sie nun wiederkehrte, fand sie in manchem die gleiche Wärme, in anderem Distanz. Manche Nachbarn erinnerten sich gern, andere blieben reserviert.</p>
-<p>Die Heimkehr war kein Triumph, sondern ein langsames Annähern. Elsa setzte sich auf die Churchbank, hörte den Vogelstimmen zu und dachte darüber nach, wie viel man in Jahren sammeln kann: Dinge, die man lernt, Dinge, die man hinterlässt. Heimkehr bedeutete, diese Dinge zu ordnen und zu akzeptieren, dass der Ort sich verändert hatte — und sie ebenso.</p>`
-  },
-  s9: {
-    kat: 'Thriller',
-    title: 'Das Foto',
-    img: 'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=700&q=80',
-    body: `<p>Monika räumte den Dachboden auf, als sie das Foto fand. Es war alt, vergilbt, die Ecken abgerieben. Auf dem Bild war eine Gruppe Menschen versammelt; im Hintergrund stand eine Gestalt, die sie seltsam berührte. Irgendetwas daran ließ Monika nicht los.</p>
-<p>Sie zeigte das Foto Freunden, suchte in alten Archiven nach ähnlichen Bildern und sprach mit alten Nachbarn. Langsam fügten sich Hinweise zusammen: ein Straßenschild, ein Teil eines Schaufensters, ein Name, der in einem vergilbten Zeitungsartikel auftauchte. Die Suche war nicht spektakulär, sondern beharrlich; sie bestand aus Anrufen, Besuchen und dem langsamen Entwirren einer Geschichte.</p>
-<p>Am Ende fand Monika keine dramatische Enthüllung, sondern die Geschichte kleiner Entscheidungen, die Leben entzweiten. Das Foto war ein Schlüssel, und die Offenlegung der Geschichte wirkte befreiend — nicht nur für sie, sondern für jene, die Teil dieser Erinnerung waren. Manchmal ist die größte Spannung nicht in der Jagd, sondern in der Erkenntnis, dass Sichtbarkeit heilen kann.</p>`
-  }
+    body: `<p>Elsa kehrte zurück, nicht aus Kapitulation, sondern aus dem Wunsch, herauszufinden, woher sie kam. Die Stadt ihrer Kindheit war anders, doch vertraut: Die Bäckerei am Marktplatz, [...]
+<p>Sie war gegangen, um die Welt zu sehen, und hatte Orte gesehen, die sie lehrten, dass Heimat nicht an einen Ort gebunden ist, sondern an Menschen und Erinnerungen. Als sie nun wiederkehrte, fa[...]
+<p>Die Heimkehr war kein Triumph, sondern ein langsames Annähern. Elsa setzte sich auf die Churchbank, hörte den Vogelstimmen zu und dachte darüber nach, wie viel man in Jahren sammeln kann: [...]
+[...]`
 };
 
-/* Open story modal by id */
-function openStoryById(id) {
-  const s = stories[id];
+// open modal logic
+const modalBg = document.getElementById('storyModal');
+const modalBox = document.querySelector('.modal-box');
+const closeBtn = document.querySelector('.modal-close');
+
+function openModal(storyId) {
+  const s = stories[storyId];
   if (!s) return;
+  document.getElementById('mImg').src = s.img;
   document.getElementById('mKat').textContent = s.kat;
   document.getElementById('mTitle').textContent = s.title;
-  document.getElementById('mImg').src = s.img;
   document.getElementById('mBody').innerHTML = s.body;
-  document.getElementById('storyModal').classList.add('active');
+  modalBg.classList.add('active');
   document.body.style.overflow = 'hidden';
 }
 
-/* Close modal */
-function closeStory() {
-  document.getElementById('storyModal').classList.remove('active');
+function closeModal() {
+  modalBg.classList.remove('active');
   document.body.style.overflow = '';
 }
 
-/* Attach listeners to data-story-id elements */
+closeBtn.addEventListener('click', closeModal);
+modalBg.addEventListener('click', (e) => { if (e.target === modalBg) closeModal(); });
+
+// attach open handlers
 document.querySelectorAll('[data-story-id]').forEach(el => {
-  el.addEventListener('click', e => {
-    const id = el.dataset.storyId;
-    if (id) openStoryById(id);
-  });
-  const inner = el.querySelector('.story-btn');
-  if (inner) {
-    inner.addEventListener('click', e => {
-      e.stopPropagation();
-      const id = el.dataset.storyId;
-      if (id) openStoryById(id);
-    });
-  }
-});
-
-/* Hero button hookup */
-const heroBtn = document.querySelector('.hero .btn-lesen[data-story-id]');
-if (heroBtn) {
-  heroBtn.addEventListener('click', e => {
-    const id = heroBtn.dataset.storyId;
-    if (id) openStoryById(id);
-  });
-}
-
-/* Modal close (X) */
-const modalCloseBtn = document.querySelector('.modal-close');
-if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeStory);
-
-/* Close on outside click */
-const modalBg = document.getElementById('storyModal');
-if (modalBg) {
-  modalBg.addEventListener('click', e => {
-    if (e.target === modalBg) closeStory();
-  });
-}
-
-/* Close on Escape */
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') closeStory();
+  el.addEventListener('click', () => openModal(el.getAttribute('data-story-id')));
 });
 </script>
 </body>
