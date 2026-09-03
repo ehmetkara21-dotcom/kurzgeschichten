@@ -1,109 +1,564 @@
-✕ 
-Liebe
-Drama
-Thriller
-Alle Geschichten
-📷 Instagram
-Geschichte der Woche
-Ein alter Mann kehrt nach 40 Jahren in seine Heimatstadt zurück — und entdeckt, dass das Versprechen, das er einst gab, alles verändert hat.
-📖 Jetzt lesen 
-Neue Geschichten
-Clara fand den Brief zwischen alten Büchern — vergilbt, mit zitternder Handschrift. Absender: Paris, 1962. Sie öffnete ihn mit zitternden Fingern.
-„Mein liebstes Herz, ich schreibe dir zum letzten Mal. Nicht weil ich dich nicht liebe — sondern weil ich dich zu sehr liebe, um zu bleiben.”
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KurzGeschichten — Geschichten fürs Herz</title>
+<meta name="description" content="Kurzgeschichten, die das Herz berühren. Täglich neue Geschichten über Liebe, Leben und das Menschliche.">
+<style>
+  :root{
+    --bg:#fdfaf6;
+    --card:#ffffff;
+    --text:#2b2420;
+    --muted:#7a6f66;
+    --accent:#b5473a;
+    --accent-dark:#8f382e;
+    --border:#ece3d8;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:'Georgia', 'Times New Roman', serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.6;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .container{max-width:1100px;margin:0 auto;padding:0 20px;}
 
-Clara las den Brief dreimal. Dann schaute sie auf das Foto ihrer Großmutter, das auf dem Regal stand. Die junge Frau darauf lächelte geheimnisvoll. Als würde sie ein Geheimnis hüten, das 60 Jahre darauf gewartet hatte, gefunden zu werden.
+  header{
+    background:var(--card);
+    border-bottom:1px solid var(--border);
+    position:sticky;top:0;z-index:100;
+  }
+  .nav-wrap{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:16px 20px;max-width:1100px;margin:0 auto;
+  }
+  .logo{font-size:1.5rem;font-weight:bold;letter-spacing:0.5px;color:var(--accent-dark);}
+  nav ul{display:flex;gap:24px;list-style:none;}
+  nav a{font-size:0.95rem;color:var(--text);transition:color .2s;}
+  nav a:hover, nav a.active{color:var(--accent);}
+  .insta-link{display:flex;align-items:center;gap:6px;font-size:0.9rem;color:var(--muted);}
+  .menu-toggle{display:none;background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--text);}
 
-')">
-Der Brief aus Paris
-Liebe4 Min.
-Karl arbeitete seit 35 Jahren in derselben Fabrik. Heute war sein letzter Tag. Er räumte seinen Spind aus — ein Foto seiner Frau, ein alter Schraubenschlüssel, eine Glücksmünze.
-Als er die Fabrikhalle verließ, blieb er kurz stehen. Die Maschinen brummten gleichmäßig weiter. Sie würden ihn nicht vermissen. Aber er — er würde sie vermissen. Das Geräusch. Den Geruch nach Öl und Metall. Die Kollegen.
+  @media (max-width:768px){
+    nav{
+      position:fixed;top:64px;left:0;right:0;bottom:0;
+      background:var(--card);
+      transform:translateX(-100%);
+      transition:transform .25s ease;
+      padding:24px;
+      overflow-y:auto;
+    }
+    nav.open{transform:translateX(0);}
+    nav ul{flex-direction:column;gap:20px;font-size:1.1rem;}
+    .menu-toggle{display:block;}
+    .insta-link{display:none;}
+  }
 
-„Auf Wiedersehen, alter Freund”, flüsterte er und legte die Hand kurz auf die kalte Stahltür. Dann ging er in die Freiheit — die ihn mehr erschreckte als jede Nachtschicht.
+  .hero{
+    background:linear-gradient(135deg,#f3e6d8,#efd9c4);
+    padding:48px 0;
+  }
+  .hero-label{color:var(--accent);font-weight:bold;letter-spacing:1px;text-transform:uppercase;font-size:0.85rem;margin-bottom:12px;}
+  .hero h1{font-size:2.2rem;margin-bottom:16px;max-width:700px;}
+  .hero p{color:var(--muted);max-width:600px;margin-bottom:20px;font-size:1.05rem;}
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap;}
 
-')">
-Die letzte Schicht
-Drama3 Min.
-Seit drei Wochen hörte Anna nachts Schritte über ihr. Die Wohnung im dritten Stock stand seit Monaten leer — das wusste sie genau.
-Sie sprach mit dem Hausmeister. Er zuckte die Schultern: „Da wohnt niemand.” Doch die Schritte kamen jede Nacht. Immer um Mitternacht. Immer dieselbe Route: Küche, Flur, Schlafzimmer.
+  .btn{
+    display:inline-block;padding:12px 24px;border-radius:6px;
+    font-family:inherit;font-size:0.95rem;cursor:pointer;border:none;
+    transition:transform .15s, box-shadow .15s;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn-primary{background:var(--accent);color:#fff;}
+  .btn-primary:hover{background:var(--accent-dark);}
+  .btn-outline{background:transparent;border:1px solid var(--muted);color:var(--text);}
 
-Als Anna eines Abends die Treppe hochging, sah sie Licht unter der Tür. Und auf der Fußmatte: ihre eigenen Hausschuhe, die sie vor einer Woche verloren hatte.
+  section{padding:48px 0;}
+  .section-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:24px;}
+  .section-head h2{font-size:1.5rem;}
+  .section-head a{color:var(--accent);font-size:0.9rem;white-space:nowrap;cursor:pointer;}
 
-')">
-Der Nachbar
-Thriller5 Min.
-Mit 68 Jahren hatte Gertrud nicht mehr damit gerechnet, sich zu verlieben. Doch dann saß er plötzlich neben ihr in der Volkshochschule — beim Aquarellkurs.
-„Sie malen sehr mutig”, sagte er und schaute auf ihr Bild. „Ich male falsch”, antwortete sie. Er lachte. „Das ist dasselbe.”
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(240px,1fr));
+    gap:24px;
+  }
 
-Sein Name war Werner. Er war Witwer, wie sie. Er mochte starken Kaffee und schwache Witze. Und er schaute sie an, als wäre sie 30 — was das Beste war, was ihr seit Jahren passiert war.
+  .card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:10px;
+    overflow:hidden;
+    cursor:pointer;
+    transition:transform .2s, box-shadow .2s;
+    display:flex;flex-direction:column;
+  }
+  .card:hover{transform:translateY(-4px);box-shadow:0 10px 24px rgba(0,0,0,0.08);}
+  .card img{height:160px;object-fit:cover;width:100%;}
+  .card-body{padding:16px;flex:1;display:flex;flex-direction:column;}
+  .badge{
+    display:inline-block;font-size:0.7rem;font-weight:bold;
+    background:var(--accent);color:#fff;padding:3px 8px;border-radius:4px;
+    margin-bottom:10px;width:fit-content;text-transform:uppercase;
+  }
+  .card h3{font-size:1.05rem;margin-bottom:8px;}
+  .card .excerpt{color:var(--muted);font-size:0.88rem;flex:1;margin-bottom:12px;
+    display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;}
+  .card-meta{font-size:0.8rem;color:var(--muted);display:flex;justify-content:space-between;align-items:center;}
+  .category-tag{color:var(--accent);font-weight:bold;}
 
-')">
-Zweiter Frühling
-Liebe4 Min.
-Jedes Jahr zu Weihnachten stellten sie einen extra Stuhl an den Tisch. Für Thomas, der vor fünf Jahren gegangen war — einfach so, mitten im November.
-Die Kinder fragten nie mehr warum. Sie wussten es. Mama brauchte diesen Stuhl. Er war ihre Art zu sagen: Du fehlst. Du bist noch hier.
+  .featured-grid{
+    display:grid;grid-template-columns:repeat(auto-fill, minmax(300px,1fr));gap:24px;
+  }
+  .featured-card{
+    position:relative;border-radius:10px;overflow:hidden;height:280px;cursor:pointer;
+    display:flex;align-items:flex-end;
+  }
+  .featured-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;}
+  .featured-card::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(to top, rgba(0,0,0,0.75), rgba(0,0,0,0.05));
+    z-index:1;
+  }
+  .featured-content{position:relative;z-index:2;color:#fff;padding:20px;}
+  .featured-content .badge{background:rgba(255,255,255,0.2);backdrop-filter:blur(4px);}
+  .featured-content h3{font-size:1.2rem;margin-bottom:6px;}
+  .featured-content .card-meta{color:rgba(255,255,255,0.85);}
 
-In diesem Jahr blieb der Stuhl leer — bis um 22 Uhr die Türklingel ging. Und alle zu atmen aufhörten.
+  .filter-bar{
+    display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px;
+  }
+  .filter-btn{
+    padding:8px 16px;border-radius:20px;border:1px solid var(--border);
+    background:var(--card);font-family:inherit;font-size:0.85rem;cursor:pointer;
+    transition:all .2s;
+  }
+  .filter-btn:hover{border-color:var(--accent);}
+  .filter-btn.active{background:var(--accent);color:#fff;border-color:var(--accent);}
 
-')">
-Lesen
-Empfohlen für Sie
-Jeden Morgen um acht Uhr saß sie am Fenster. Mit einer Tasse Tee. Mit demselben Blick in die Ferne. Paul sah sie vom Café aus — jeden Tag, seit drei Jahren.
-Er wusste nichts über sie. Nur dass sie immer pünktlich war, immer allein, und immer so aussah, als würde sie auf jemanden warten, der nie kommt.
+  .top-list{list-style:none;display:flex;flex-direction:column;gap:14px;}
+  .top-item{
+    display:flex;align-items:center;gap:16px;cursor:pointer;padding:8px;
+    border-radius:8px;transition:background .2s;
+  }
+  .top-item:hover{background:var(--card);}
+  .top-rank{font-size:1.5rem;font-weight:bold;color:var(--border);width:36px;flex-shrink:0;}
+  .top-item img{width:56px;height:56px;object-fit:cover;border-radius:8px;flex-shrink:0;}
+  .top-item-title{font-size:0.95rem;font-weight:bold;}
+  .top-item-cat{font-size:0.8rem;color:var(--muted);}
 
-An einem Dienstag blieb der Stuhl am Fenster leer. Am Mittwoch auch. Paul bestellte seinen Kaffee und merkte, dass ihm etwas fehlte — jemand, den er nie gekannt hatte.
+  .insta-cta{
+    background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045);
+    color:#fff;text-align:center;padding:56px 20px;border-radius:14px;
+    margin:0 20px;
+  }
+  .insta-cta h2{font-size:1.6rem;margin-bottom:10px;}
+  .insta-cta p{opacity:0.95;max-width:500px;margin:0 auto 20px;}
+  .insta-cta .btn{background:#fff;color:#833ab4;font-weight:bold;}
 
-')">
-★ Top Geschichte
-Liebe · 5 Min. lesen
-Nach 20 Jahren in der Stadt kehrte Elsa ins Dorf zurück. Alles war kleiner als in ihrer Erinnerung. Die Straßen enger, die Häuser niedriger, die Menschen — älter.
-Nur der Bach war gleich geblieben. Er rauschte noch genauso wie damals, als sie als Kind darin ihre Füße badete und glaubte, die Welt würde immer so einfach sein.
+  .stats-row{display:flex;justify-content:center;gap:40px;flex-wrap:wrap;padding:36px 20px;text-align:center;}
+  .stats-row div strong{display:block;font-size:1.4rem;color:var(--accent-dark);}
+  .stats-row div span{font-size:0.85rem;color:var(--muted);}
 
-Sie setzte sich ans Ufer. Zog die Schuhe aus. Und ließ ihre Füße ins Wasser gleiten. Für einen Moment war sie wieder zehn Jahre alt.
+  footer{background:#231d19;color:#cfc4b8;padding:48px 0 24px;margin-top:40px;}
+  .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:32px;margin-bottom:32px;}
+  .footer-grid h4{color:#fff;margin-bottom:14px;font-size:1rem;}
+  .footer-grid ul{list-style:none;}
+  .footer-grid li{margin-bottom:8px;font-size:0.9rem;}
+  .footer-grid a:hover{color:#fff;}
+  .footer-logo{font-size:1.3rem;color:#fff;margin-bottom:10px;font-weight:bold;}
+  .footer-bottom{border-top:1px solid #3a322c;padding-top:20px;text-align:center;font-size:0.8rem;color:#8a8078;}
+  @media (max-width:700px){.footer-grid{grid-template-columns:1fr 1fr;}}
 
-')">
-❤ Sehr beliebt
-Drama · 4 Min. lesen
-Beim Aufräumen des Dachbodens fand Monika ein Foto. Schwarz-weiß, vergilbt. Eine Frau auf einer Parkbank — die genauso aussah wie sie. Dieselben Augen, dasselbe Lächeln.
-Auf der Rückseite stand in alter Schrift: „München, 1943.”
+  .modal-overlay{
+    display:none;position:fixed;inset:0;background:rgba(20,15,10,0.75);
+    z-index:1000;padding:20px;overflow-y:auto;
+  }
+  .modal-overlay.open{display:flex;align-items:flex-start;justify-content:center;}
+  .modal{
+    background:var(--bg);max-width:680px;width:100%;border-radius:12px;
+    margin:40px auto;overflow:hidden;animation:modalIn .25s ease;
+  }
+  @keyframes modalIn{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+  .modal-img{height:260px;width:100%;object-fit:cover;}
+  .modal-body{padding:32px;}
+  .modal-close{
+    position:absolute;top:16px;right:16px;background:rgba(0,0,0,0.5);color:#fff;
+    border:none;width:36px;height:36px;border-radius:50%;font-size:1.2rem;cursor:pointer;
+    z-index:2;
+  }
+  .modal-inner{position:relative;}
+  .modal-body h2{font-size:1.6rem;margin-bottom:6px;}
+  .modal-body .card-meta{margin-bottom:20px;}
+  .modal-body p{margin-bottom:16px;color:var(--text);}
+  .save-btn{margin-top:16px;}
+  body.modal-active{overflow:hidden;}
+</style>
+</head>
+<body>
 
-Monika war 1985 geboren. Das war unmöglich. Und doch hielt sie das Foto in zitternden Händen und wusste: Manche Dinge haben keine Erklärung. Sie haben nur eine Geschichte.
+<header>
+  <div class="nav-wrap">
+    <a href="#" class="logo" onclick="closeMenu()">KurzGeschichten</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Menü öffnen">☰</button>
+    <nav id="mainNav">
+      <ul>
+        <li><a href="#top" class="active" onclick="closeMenu()">Startseite</a></li>
+        <li><a href="#" onclick="filterCategory('Liebe');closeMenu();return false;">Liebe</a></li>
+        <li><a href="#" onclick="filterCategory('Drama');closeMenu();return false;">Drama</a></li>
+        <li><a href="#" onclick="filterCategory('Thriller');closeMenu();return false;">Thriller</a></li>
+        <li><a href="#alle" onclick="closeMenu()">Alle Geschichten</a></li>
+      </ul>
+    </nav>
+    <a class="insta-link" href="https://instagram.com" target="_blank" rel="noopener">📷 Instagram</a>
+  </div>
+</header>
 
-')">
-🔥 Diese Woche
-Thriller · 4 Min. lesen
-Heinrich saß im Zug und schaute durch das beschlagene Fenster. 40 Jahre. So lange war er nicht mehr in Feldkirch gewesen...
-')">
+<div id="top"></div>
+<section class="hero">
+  <div class="container">
+    <div class="hero-label">Geschichte der Woche</div>
+    <h1>Das letzte <em>Versprechen</em></h1>
+    <p>Ein alter Mann kehrt nach 40 Jahren in seine Heimatstadt zurück — und entdeckt, dass das Versprechen, das er einst gab, alles verändert hat.</p>
+    <div class="hero-actions">
+      <button class="btn btn-primary" onclick="openStory('heinrich')">📖 Jetzt lesen</button>
+      <button class="btn btn-outline">+ Merken</button>
+    </div>
+  </div>
+</section>
 
-Jedes Jahr zu Weihnachten stellten sie einen extra Stuhl an den Tisch...
-')">
+<section class="container">
+  <div class="section-head">
+    <h2>Neue Geschichten</h2>
+    <a onclick="filterCategory('all')">Alle ansehen →</a>
+  </div>
+  <div class="grid" id="newStoriesGrid"></div>
+</section>
 
-Mit 68 Jahren hatte Gertrud nicht mehr damit gerechnet, sich zu verlieben...
-')">
+<section class="container" id="alle">
+  <div class="section-head">
+    <h2>Empfohlen für Sie</h2>
+  </div>
+  <div class="featured-grid" id="featuredGrid"></div>
+</section>
 
-Seit drei Wochen hörte Anna nachts Schritte über ihr...
-')">
+<section class="container">
+  <div class="section-head">
+    <h2>Alle Geschichten</h2>
+  </div>
+  <div class="filter-bar" id="filterBar"></div>
+  <div class="grid" id="allStoriesGrid"></div>
+</section>
 
-Jeden Morgen um acht Uhr saß sie am Fenster...
-')">
+<section class="container">
+  <div class="section-head">
+    <h2>Top 10 diese Woche</h2>
+  </div>
+  <ul class="top-list" id="topList"></ul>
+</section>
 
-Folgen Sie uns auf Instagram
-📷 Jetzt folgen
+<section class="container">
+  <div class="insta-cta">
+    <h2>Folgen Sie uns auf Instagram</h2>
+    <p>Täglich neue Kurzgeschichten, die das Herz berühren. Werden Sie Teil unserer wachsenden Gemeinschaft.</p>
+    <a class="btn" href="https://instagram.com" target="_blank" rel="noopener">📷 Jetzt folgen</a>
+  </div>
+</section>
 
-974B 50+ Täglich
-KurzGeschichten
-Kurzgeschichten, die das Herz berühren. Täglich neue Geschichten über Liebe, Leben und das Menschliche.
+<div class="stats-row">
+  <div><strong>974K+</strong><span>Aufrufe</span></div>
+  <div><strong>50+</strong><span>Geschichten</span></div>
+  <div><strong>Täglich</strong><span>Neu</span></div>
+</div>
 
-Liebe
-Drama
-Thriller
-Humor
-Alltag
-Über uns
-Kontakt
-Datenschutz
-Impressum
-📷 Instagram
-▶ YouTube
-📘 Facebook
-KurzGeschichten — Alle Rechte vorbehalten Geschichten fürs Herz
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">KurzGeschichten</div>
+        <p>Kurzgeschichten, die das Herz berühren. Täglich neue Geschichten über Liebe, Leben und das Menschliche.</p>
+      </div>
+      <div>
+        <h4>Kategorien</h4>
+        <ul>
+          <li><a onclick="filterCategory('Liebe')">Liebe</a></li>
+          <li><a onclick="filterCategory('Drama')">Drama</a></li>
+          <li><a onclick="filterCategory('Thriller')">Thriller</a></li>
+          <li><a onclick="filterCategory('Humor')">Humor</a></li>
+          <li><a onclick="filterCategory('Alltag')">Alltag</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Info</h4>
+        <ul>
+          <li><a href="#">Über uns</a></li>
+          <li><a href="#">Kontakt</a></li>
+          <li><a href="#">Datenschutz</a></li>
+          <li><a href="#">Impressum</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Folgen</h4>
+        <ul>
+          <li><a href="https://instagram.com" target="_blank" rel="noopener">📷 Instagram</a></li>
+          <li><a href="#">▶ YouTube</a></li>
+          <li><a href="#">📘 Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 KurzGeschichten — Alle Rechte vorbehalten. Geschichten fürs Herz.</div>
+  </div>
+</footer>
+
+<div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
+  <div class="modal">
+    <div class="modal-inner">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <img class="modal-img" id="modalImg" src="" alt="">
+      <div class="modal-body">
+        <span class="badge" id="modalBadge"></span>
+        <h2 id="modalTitle"></h2>
+        <div class="card-meta"><span class="category-tag" id="modalCategory"></span><span id="modalTime"></span></div>
+        <div id="modalText"></div>
+        <button class="btn btn-outline save-btn">+ Merken</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const stories = [
+  {
+    id:'brief-paris', title:'Der Brief aus Paris', category:'Liebe', time:'4 Min.', tag:'Neu',
+    img:'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=600&q=80',
+    excerpt:'Clara fand den Brief zwischen alten Büchern — vergilbt, mit zitternder Handschrift. Absender: Paris, 1962.',
+    text:[
+      'Clara fand den Brief zwischen alten Büchern — vergilbt, mit zitternder Handschrift. Absender: Paris, 1962. Sie öffnete ihn mit zitternden Fingern.',
+      '„Mein liebstes Herz, ich schreibe dir zum letzten Mal. Nicht weil ich dich nicht liebe — sondern weil ich dich zu sehr liebe, um zu bleiben.“',
+      'Clara las den Brief dreimal. Dann schaute sie auf das Foto ihrer Großmutter, das auf dem Regal stand. Die junge Frau darauf lächelte geheimnisvoll. Als würde sie ein Geheimnis hüten, das 60 Jahre darauf gewartet hatte, gefunden zu werden.'
+    ]
+  },
+  {
+    id:'letzte-schicht', title:'Die letzte Schicht', category:'Drama', time:'3 Min.', tag:'Neu',
+    img:'https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?w=600&q=80',
+    excerpt:'Karl arbeitete seit 35 Jahren in derselben Fabrik. Heute war sein letzter Tag.',
+    text:[
+      'Karl arbeitete seit 35 Jahren in derselben Fabrik. Heute war sein letzter Tag. Er räumte seinen Spind aus — ein Foto seiner Frau, ein alter Schraubenschlüssel, eine Glücksmünze.',
+      'Als er die Fabrikhalle verließ, blieb er kurz stehen. Die Maschinen brummten gleichmäßig weiter. Sie würden ihn nicht vermissen. Aber er — er würde sie vermissen. Das Geräusch. Den Geruch nach Öl und Metall. Die Kollegen.',
+      '„Auf Wiedersehen, alter Freund“, flüsterte er und legte die Hand kurz auf die kalte Stahltür. Dann ging er in die Freiheit — die ihn mehr erschreckte als jede Nachtschicht.'
+    ]
+  },
+  {
+    id:'nachbar', title:'Der Nachbar', category:'Thriller', time:'5 Min.', tag:'Neu',
+    img:'https://images.unsplash.com/photo-1448375240586-882707db888b?w=600&q=80',
+    excerpt:'Seit drei Wochen hörte Anna nachts Schritte über ihr. Die Wohnung im dritten Stock stand seit Monaten leer.',
+    text:[
+      'Seit drei Wochen hörte Anna nachts Schritte über ihr. Die Wohnung im dritten Stock stand seit Monaten leer — das wusste sie genau.',
+      'Sie sprach mit dem Hausmeister. Er zuckte die Schultern: „Da wohnt niemand.“ Doch die Schritte kamen jede Nacht. Immer um Mitternacht. Immer dieselbe Route: Küche, Flur, Schlafzimmer.',
+      'Als Anna eines Abends die Treppe hochging, sah sie Licht unter der Tür. Und auf der Fußmatte: ihre eigenen Hausschuhe, die sie vor einer Woche verloren hatte.'
+    ]
+  },
+  {
+    id:'zweiter-fruehling', title:'Zweiter Frühling', category:'Liebe', time:'4 Min.', tag:'Beliebt',
+    img:'https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=600&q=80',
+    excerpt:'Mit 68 Jahren hatte Gertrud nicht mehr damit gerechnet, sich zu verlieben.',
+    text:[
+      'Mit 68 Jahren hatte Gertrud nicht mehr damit gerechnet, sich zu verlieben. Doch dann saß er plötzlich neben ihr in der Volkshochschule — beim Aquarellkurs.',
+      '„Sie malen sehr mutig“, sagte er und schaute auf ihr Bild. „Ich male falsch“, antwortete sie. Er lachte. „Das ist dasselbe.“',
+      'Sein Name war Werner. Er war Witwer, wie sie. Er mochte starken Kaffee und schwache Witze. Und er schaute sie an, als wäre sie 30 — was das Beste war, was ihr seit Jahren passiert war.'
+    ]
+  },
+  {
+    id:'leere-stuhl', title:'Der leere Stuhl', category:'Drama', time:'3 Min.', tag:'',
+    img:'https://images.unsplash.com/photo-1574267432553-4b4628081c31?w=600&q=80',
+    excerpt:'Jedes Jahr zu Weihnachten stellten sie einen extra Stuhl an den Tisch. Für Thomas.',
+    text:[
+      'Jedes Jahr zu Weihnachten stellten sie einen extra Stuhl an den Tisch. Für Thomas, der vor fünf Jahren gegangen war — einfach so, mitten im November.',
+      'Die Kinder fragten nie mehr warum. Sie wussten es. Mama brauchte diesen Stuhl. Er war ihre Art zu sagen: Du fehlst. Du bist noch hier.',
+      'In diesem Jahr blieb der Stuhl leer — bis um 22 Uhr die Türklingel ging. Und alle hörten auf zu atmen.'
+    ]
+  },
+  {
+    id:'frau-fenster', title:'Die Frau am Fenster', category:'Liebe', time:'5 Min.', tag:'★ Top Geschichte',
+    img:'https://images.unsplash.com/photo-1485846234645-a62644f84728?w=700&q=80',
+    excerpt:'Jeden Morgen um acht Uhr saß sie am Fenster. Mit einer Tasse Tee.',
+    text:[
+      'Jeden Morgen um acht Uhr saß sie am Fenster. Mit einer Tasse Tee. Mit demselben Blick in die Ferne. Paul sah sie vom Café aus — jeden Tag, seit drei Jahren.',
+      'Er wusste nichts über sie. Nur dass sie immer pünktlich war, immer allein, und immer so aussah, als würde sie auf jemanden warten, der nie kommt.',
+      'An einem Dienstag blieb der Stuhl am Fenster leer. Am Mittwoch auch. Paul bestellte seinen Kaffee und merkte, dass ihm etwas fehlte — jemand, den er nie gekannt hatte.'
+    ]
+  },
+  {
+    id:'heimkehr', title:'Heimkehr', category:'Drama', time:'4 Min.', tag:'❤ Sehr beliebt',
+    img:'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=700&q=80',
+    excerpt:'Nach 20 Jahren in der Stadt kehrte Elsa ins Dorf zurück.',
+    text:[
+      'Nach 20 Jahren in der Stadt kehrte Elsa ins Dorf zurück. Alles war kleiner als in ihrer Erinnerung. Die Straßen enger, die Häuser niedriger, die Menschen — älter.',
+      'Nur der Bach war gleich geblieben. Er rauschte noch genauso wie damals, als sie als Kind darin ihre Füße badete und glaubte, die Welt würde immer so einfach sein.',
+      'Sie setzte sich ans Ufer. Zog die Schuhe aus. Und ließ ihre Füße ins Wasser gleiten. Für einen Moment war sie wieder zehn Jahre alt.'
+    ]
+  },
+  {
+    id:'foto', title:'Das Foto', category:'Thriller', time:'4 Min.', tag:'🔥 Diese Woche',
+    img:'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=700&q=80',
+    excerpt:'Beim Aufräumen des Dachbodens fand Monika ein Foto. Schwarz-weiß, vergilbt.',
+    text:[
+      'Beim Aufräumen des Dachbodens fand Monika ein Foto. Schwarz-weiß, vergilbt. Eine Frau auf einer Parkbank — die genauso aussah wie sie. Dieselben Augen, dasselbe Lächeln.',
+      'Auf der Rückseite stand in alter Schrift: „München, 1943.“',
+      'Monika war 1985 geboren. Das war unmöglich. Und doch hielt sie das Foto in zitternden Händen und wusste: Manche Dinge haben keine Erklärung. Sie haben nur eine Geschichte.'
+    ]
+  },
+  {
+    id:'heinrich', title:'Das letzte Versprechen', category:'Drama', time:'6 Min.', tag:'Geschichte der Woche',
+    img:'https://images.unsplash.com/photo-1455390582262-044cdead277a?w=700&q=80',
+    excerpt:'Heinrich saß im Zug und schaute durch das beschlagene Fenster. 40 Jahre.',
+    text:[
+      'Heinrich saß im Zug und schaute durch das beschlagene Fenster. 40 Jahre. So lange war er nicht mehr in Feldkirch gewesen.',
+      'Als junger Mann hatte er seiner Jugendliebe versprochen, eines Tages zurückzukommen. Dann kam das Leben dazwischen — eine andere Stadt, eine andere Frau, ein anderes Leben.',
+      'Jetzt, mit 78 Jahren, stieg er langsam aus dem Zug. Der Bahnhof sah kaum anders aus. Und dort, auf der immer gleichen Bank, saß eine alte Frau und schaute in seine Richtung, als hätte sie die ganze Zeit gewartet.'
+    ]
+  },
+  {
+    id:'aquarell', title:'Aquarellkurs', category:'Humor', time:'3 Min.', tag:'',
+    img:'https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?w=600&q=80',
+    excerpt:'Der Kursleiter hatte noch nie so viele schiefe Bilder von Katzen gesehen.',
+    text:[
+      'Der Kursleiter hatte noch nie so viele schiefe Bilder von Katzen gesehen. Acht Teilnehmer, acht völlig verschiedene Interpretationen desselben Stillebens.',
+      'Werner malte seine Vase so, dass sie eher wie ein Elefant aussah. Gertrud lachte so sehr, dass ihr die Farbe vom Pinsel tropfte — direkt auf sein Blatt.',
+      'Am Ende der Stunde hatten sie kein einziges brauchbares Bild. Aber beide wussten: Das würde nicht der letzte Kurs zusammen sein.'
+    ]
+  },
+  {
+    id:'sonntagskaffee', title:'Der Sonntagskaffee', category:'Alltag', time:'2 Min.', tag:'',
+    img:'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=600&q=80',
+    excerpt:'Jeden Sonntag um neun das gleiche Ritual: Kaffee, Zeitung, Stille.',
+    text:[
+      'Jeden Sonntag um neun das gleiche Ritual: Kaffee, Zeitung, Stille. Seit 30 Jahren saßen sie am selben Tisch, tranken aus denselben Tassen.',
+      'Manchmal sprachen sie kein Wort. Aber das Schweigen zwischen ihnen war nie leer — es war voller Dinge, die sie schon längst wussten.',
+      'An diesem Sonntag legte er seine Hand auf ihre. Kein Grund. Kein Anlass. Nur das Bedürfnis, sie zu spüren.'
+    ]
+  }
+];
+
+let currentFilter = 'all';
+
+function cardHTML(story, large){
+  return `
+    <div class="${large ? 'featured-card' : 'card'}" onclick="openStory('${story.id}')">
+      <img src="${story.img}" alt="${story.title}" loading="lazy">
+      ${large ? `
+        <div class="featured-content">
+          ${story.tag ? `<span class="badge">${story.tag}</span>` : ''}
+          <h3>${story.title}</h3>
+          <div class="card-meta"><span class="category-tag">${story.category}</span><span>${story.time} lesen</span></div>
+        </div>
+      ` : `
+        <div class="card-body">
+          ${story.tag ? `<span class="badge">${story.tag}</span>` : ''}
+          <h3>${story.title}</h3>
+          <p class="excerpt">${story.excerpt}</p>
+          <div class="card-meta"><span class="category-tag">${story.category}</span><span>${story.time}</span></div>
+        </div>
+      `}
+    </div>
+  `;
+}
+
+function renderNewStories(){
+  const grid = document.getElementById('newStoriesGrid');
+  const newest = stories.slice(0,5);
+  grid.innerHTML = newest.map(s => cardHTML(s,false)).join('');
+}
+
+function renderFeatured(){
+  const grid = document.getElementById('featuredGrid');
+  const featured = [stories.find(s=>s.id==='frau-fenster'), stories.find(s=>s.id==='heimkehr'), stories.find(s=>s.id==='foto')];
+  grid.innerHTML = featured.map(s => cardHTML(s,true)).join('');
+}
+
+function renderFilterBar(){
+  const cats = ['all','Liebe','Drama','Thriller','Humor','Alltag'];
+  const bar = document.getElementById('filterBar');
+  bar.innerHTML = cats.map(c => `
+    <button class="filter-btn ${currentFilter===c ? 'active':''}" onclick="filterCategory('${c}')">
+      ${c==='all' ? 'Alle' : c}
+    </button>
+  `).join('');
+}
+
+function renderAllStories(){
+  const grid = document.getElementById('allStoriesGrid');
+  const filtered = currentFilter==='all' ? stories : stories.filter(s=>s.category===currentFilter);
+  grid.innerHTML = filtered.map(s => cardHTML(s,false)).join('');
+}
+
+function filterCategory(cat){
+  currentFilter = cat;
+  renderFilterBar();
+  renderAllStories();
+  document.getElementById('alle').scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+function renderTopList(){
+  const list = document.getElementById('topList');
+  const top10 = stories.slice(0,10);
+  list.innerHTML = top10.map((s,i)=>`
+    <li class="top-item" onclick="openStory('${s.id}')">
+      <span class="top-rank">${i+1}</span>
+      <img src="${s.img}" alt="${s.title}">
+      <div>
+        <div class="top-item-title">${s.title}</div>
+        <div class="top-item-cat">${s.category} · ${s.time}</div>
+      </div>
+    </li>
+  `).join('');
+}
+
+function openStory(id){
+  const story = stories.find(s=>s.id===id);
+  if(!story) return;
+  document.getElementById('modalImg').src = story.img;
+  document.getElementById('modalImg').alt = story.title;
+  document.getElementById('modalBadge').textContent = story.tag || story.category;
+  document.getElementById('modalTitle').textContent = story.title;
+  document.getElementById('modalCategory').textContent = story.category;
+  document.getElementById('modalTime').textContent = story.time + ' lesen';
+  document.getElementById('modalText').innerHTML = story.text.map(p=>`<p>${p}</p>`).join('');
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.classList.add('modal-active');
+}
+
+function closeModal(){
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.classList.remove('modal-active');
+}
+
+function closeModalOutside(e){
+  if(e.target.id === 'modalOverlay') closeModal();
+}
+
+document.addEventListener('keydown', function(e){
+  if(e.key === 'Escape') closeModal();
+});
+
+const menuToggle = document.getElementById('menuToggle');
+const mainNav = document.getElementById('mainNav');
+menuToggle.addEventListener('click', function(){
+  mainNav.classList.toggle('open');
+});
+function closeMenu(){
+  mainNav.classList.remove('open');
+}
+
+renderNewStories();
+renderFeatured();
+renderFilterBar();
+renderAllStories();
+renderTopList();
+</script>
+
+</body>
+</html>
