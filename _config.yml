@@ -1,9 +1,0 @@
-title: KurzGeschichten
-author: KurzGeschichten
-description: Kurzgeschichten - Geschichten fürs Herz
-url: https://ehmetkara21-dotcom.github.io/kurzgeschichten
-plugins:
-  - jekyll-paginate
-exclude:
-  - README.md
-  - .gitignore
